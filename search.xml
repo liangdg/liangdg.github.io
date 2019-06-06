@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[mysql]]></title>
+    <url>%2F2019%2F05%2F24%2Fmysql%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[helloworld]]></title>
+    <url>%2F2019%2F05%2F23%2Fhelloworld%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>新手入门</category>
+      </categories>
+      <tags>
+        <tag>新手入门</tag>
+      </tags>
+  </entry>
+</search>
