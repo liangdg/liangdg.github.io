@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>我的博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-02-28T16:19:12.812Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>梁端刚</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>change</title>
+    <link href="http://yoursite.com/2019/05/24/mysql/"/>
+    <id>http://yoursite.com/2019/05/24/mysql/</id>
+    <published>2019-05-24T01:03:19.000Z</published>
+    <updated>2020-02-28T16:19:12.812Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>helloworld</title>
+    <link href="http://yoursite.com/2019/05/23/helloworld/"/>
+    <id>http://yoursite.com/2019/05/23/helloworld/</id>
+    <published>2019-05-23T09:22:52.000Z</published>
+    <updated>2019-05-23T09:27:32.024Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="新手入门" scheme="http://yoursite.com/categories/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
+    
+    
+      <category term="新手入门" scheme="http://yoursite.com/tags/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
+    
+  </entry>
+  
+</feed>
