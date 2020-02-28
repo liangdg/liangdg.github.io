@@ -96,15 +96,18 @@
 
 
 
-  <meta name="keywords" content="新手入门">
+  <meta name="description" content="今天写点什么呢...">
+<meta name="keywords" content="新手入门">
 <meta property="og:type" content="article">
 <meta property="og:title" content="helloworld">
-<meta property="og:url" content="http://yoursite.com/2019/05/23/helloworld/index.html">
+<meta property="og:url" content="https://liangdg.github.io/2019/05/23/helloworld/index.html">
 <meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="今天写点什么呢...">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-05-23T09:27:32.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="helloworld">
+<meta name="twitter:description" content="今天写点什么呢...">
 
 
 
@@ -114,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/23/helloworld/">
+  <link rel="canonical" href="https://liangdg.github.io/2019/05/23/helloworld/">
 
 
 
@@ -221,23 +224,6 @@
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
         
@@ -369,11 +355,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/23/helloworld/">
+    <link itemprop="mainEntityOfPage" href="https://liangdg.github.io/2019/05/23/helloworld/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="梁端刚">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="今天写点什么呢...">
       <meta itemprop="image" content="/images/header.jpeg">
     </span>
 
@@ -448,6 +434,17 @@
           
 
           
+          
+            <span id="/2019/05/23/helloworld/" class="leancloud_visitors" data-flag-title="helloworld">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -565,7 +562,7 @@
               <img class="site-author-image" itemprop="image" src="/images/header.jpeg" alt="梁端刚">
             
               <p class="site-author-name" itemprop="name">梁端刚</p>
-              <div class="site-description motion-element" itemprop="description"></div>
+              <div class="site-description motion-element" itemprop="description">今天写点什么呢...</div>
           </div>
 
           
@@ -1117,6 +1114,66 @@
 
 
   
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '3EvNcKzLPJdhA22y2IDtF8Vv-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '3EvNcKzLPJdhA22y2IDtF8Vv-gzGzoHsz',
+                'X-LC-Key': '4isHUQEzFucV1mH1ctFYRPJm',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
 
   
 

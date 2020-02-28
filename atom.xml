@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://liangdg.github.io/"/>
   <updated>2020-02-28T16:59:45.029Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://liangdg.github.io/</id>
   
   <author>
     <name>梁端刚</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>java中位运算^,&amp;,&lt;&lt;,&gt;&gt;,&lt;&lt;&lt;,&gt;&gt;&gt;总结[转]</title>
-    <link href="http://yoursite.com/2020/02/29/java%E4%B8%AD%E4%BD%8D%E8%BF%90%E7%AE%97%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2020/02/29/java中位运算总结/</id>
+    <link href="https://liangdg.github.io/2020/02/29/java%E4%B8%AD%E4%BD%8D%E8%BF%90%E7%AE%97%E6%80%BB%E7%BB%93/"/>
+    <id>https://liangdg.github.io/2020/02/29/java中位运算总结/</id>
     <published>2020-02-28T16:49:52.000Z</published>
     <updated>2020-02-28T16:59:45.029Z</updated>
     
@@ -35,17 +35,17 @@
     
     </summary>
     
-      <category term="新手入门" scheme="http://yoursite.com/categories/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
+      <category term="新手入门" scheme="https://liangdg.github.io/categories/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
     
     
-      <category term="新手入门" scheme="http://yoursite.com/tags/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
+      <category term="新手入门" scheme="https://liangdg.github.io/tags/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
     
   </entry>
   
   <entry>
     <title>helloworld</title>
-    <link href="http://yoursite.com/2019/05/23/helloworld/"/>
-    <id>http://yoursite.com/2019/05/23/helloworld/</id>
+    <link href="https://liangdg.github.io/2019/05/23/helloworld/"/>
+    <id>https://liangdg.github.io/2019/05/23/helloworld/</id>
     <published>2019-05-23T09:22:52.000Z</published>
     <updated>2019-05-23T09:27:32.024Z</updated>
     
@@ -53,10 +53,10 @@
     
     </summary>
     
-      <category term="新手入门" scheme="http://yoursite.com/categories/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
+      <category term="新手入门" scheme="https://liangdg.github.io/categories/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
     
     
-      <category term="新手入门" scheme="http://yoursite.com/tags/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
+      <category term="新手入门" scheme="https://liangdg.github.io/tags/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
     
   </entry>
   
