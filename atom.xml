@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liangdg.github.io/"/>
-  <updated>2020-02-28T19:40:55.047Z</updated>
+  <updated>2020-03-01T08:43:45.590Z</updated>
   <id>https://liangdg.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>springboot配置静态资源映射Swagger找不到路径</title>
-    <link href="https://liangdg.github.io/2020/02/29/springboot%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%98%A0%E5%B0%84Swagger%E6%89%BE%E4%B8%8D%E5%88%B0%E8%B7%AF%E5%BE%84/"/>
-    <id>https://liangdg.github.io/2020/02/29/springboot配置静态资源映射Swagger找不到路径/</id>
-    <published>2020-02-28T19:26:16.000Z</published>
-    <updated>2020-02-28T19:40:55.047Z</updated>
+    <title>01谈谈你对Java平台的理解?[转]</title>
+    <link href="https://liangdg.github.io/2020/03/01/Java%E6%A0%B8%E5%BF%8336%E8%AE%B201/"/>
+    <id>https://liangdg.github.io/2020/03/01/Java核心36讲01/</id>
+    <published>2020-03-01T07:59:01.000Z</published>
+    <updated>2020-03-01T08:43:45.590Z</updated>
     
     <summary type="html">
     
@@ -29,12 +29,18 @@
       
         
         
-          &lt;p&gt;&lt;img src=&quot;//liangdg.github.io/2020/02/29/springboot配置静态资源映射Swagger找不到路径/pb.jpg&quot;
+          &lt;p&gt;从你接触Java开发到现在，你对Java最直观的印象是什么呢？是它宣传的 “Write once, run
         
       
     
     </summary>
     
+      <category term="Java" scheme="https://liangdg.github.io/categories/Java/"/>
+    
+    
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+    
+      <category term="笔记" scheme="https://liangdg.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -43,7 +49,7 @@
     <link href="https://liangdg.github.io/2020/02/29/java%E4%B8%AD%E4%BD%8D%E8%BF%90%E7%AE%97%E6%80%BB%E7%BB%93/"/>
     <id>https://liangdg.github.io/2020/02/29/java中位运算总结/</id>
     <published>2020-02-28T16:49:52.000Z</published>
-    <updated>2020-02-28T19:20:19.292Z</updated>
+    <updated>2020-03-01T08:13:20.674Z</updated>
     
     <summary type="html">
     
@@ -51,10 +57,8 @@
     
     </summary>
     
-      <category term="新手入门" scheme="https://liangdg.github.io/categories/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
+      <category term="Java" scheme="https://liangdg.github.io/categories/Java/"/>
     
-    
-      <category term="新手入门" scheme="https://liangdg.github.io/tags/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
     
   </entry>
   
@@ -63,16 +67,12 @@
     <link href="https://liangdg.github.io/2019/05/23/helloworld/"/>
     <id>https://liangdg.github.io/2019/05/23/helloworld/</id>
     <published>2019-05-23T09:22:52.000Z</published>
-    <updated>2019-05-23T09:27:32.024Z</updated>
+    <updated>2020-03-01T08:10:27.980Z</updated>
     
     <summary type="html">
     
     </summary>
     
-      <category term="新手入门" scheme="https://liangdg.github.io/categories/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
-    
-    
-      <category term="新手入门" scheme="https://liangdg.github.io/tags/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
     
   </entry>
   
