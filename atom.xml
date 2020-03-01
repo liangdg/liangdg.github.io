@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liangdg.github.io/"/>
-  <updated>2020-03-01T08:43:45.590Z</updated>
+  <updated>2020-03-01T08:57:13.446Z</updated>
   <id>https://liangdg.github.io/</id>
   
   <author>
@@ -21,17 +21,12 @@
     <link href="https://liangdg.github.io/2020/03/01/Java%E6%A0%B8%E5%BF%8336%E8%AE%B201/"/>
     <id>https://liangdg.github.io/2020/03/01/Java核心36讲01/</id>
     <published>2020-03-01T07:59:01.000Z</published>
-    <updated>2020-03-01T08:43:45.590Z</updated>
+    <updated>2020-03-01T08:57:13.446Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;从你接触Java开发到现在，你对Java最直观的印象是什么呢？是它宣传的 “Write once, run
-        
-      
+      &lt;p&gt;从你接触Java开发到现在，你对Java最直观的印象是什么呢？是它宣传的 “Write once, run anywhere”，还是目前看已经有些过于形式主义的语法呢？你对于Java平台到底了解&lt;br&gt;到什么程度？请你先停下来总结思考一下。&lt;/p&gt;
+&lt;p&gt;今天我要问你的问题是，&lt;strong&gt;谈谈你对Java平台的理解？“Java是解释执行”，这句话正确吗？&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
