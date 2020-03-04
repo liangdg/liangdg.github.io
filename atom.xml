@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liangdg.github.io/"/>
-  <updated>2020-03-03T08:03:08.031Z</updated>
+  <updated>2020-03-04T15:46:46.640Z</updated>
   <id>https://liangdg.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>01谈谈你对Java平台的理解?[笔记]</title>
+    <link href="https://liangdg.github.io/2020/03/04/Java%E6%A0%B8%E5%BF%8336%E8%AE%B201%E7%AC%94%E8%AE%B0/"/>
+    <id>https://liangdg.github.io/2020/03/04/Java核心36讲01笔记/</id>
+    <published>2020-03-04T15:17:01.000Z</published>
+    <updated>2020-03-04T15:46:46.640Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;谈谈你对Java平台的理解？“Java是解释执行”，这句话正确吗？&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://liangdg.github.io/categories/Java/"/>
+    
+      <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
+    
+    
+      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>03谈谈fnal、fnally、 fnalize有什么不同？[转]</title>
@@ -34,9 +58,9 @@
       <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
     
     
-      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
-    
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
     
   </entry>
   
@@ -60,9 +84,9 @@
       <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
     
     
-      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
-    
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
     
   </entry>
   
@@ -107,9 +131,9 @@
       <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
     
     
-      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
-    
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
     
   </entry>
   
