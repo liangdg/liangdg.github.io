@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liangdg.github.io/"/>
-  <updated>2020-03-04T15:46:46.640Z</updated>
+  <updated>2020-03-06T19:07:52.243Z</updated>
   <id>https://liangdg.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>强引用、软引用、弱引用、幻象引用有什么区别？[转]</title>
+    <link href="https://liangdg.github.io/2020/03/05/Java%E6%A0%B8%E5%BF%8336%E8%AE%B204/"/>
+    <id>https://liangdg.github.io/2020/03/05/Java核心36讲04/</id>
+    <published>2020-03-05T08:59:40.000Z</published>
+    <updated>2020-03-06T19:07:52.243Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在Java语言中，除了原始数据类型的变量，其他所有都是所谓的引用类型，指向各种不同的对象，理解引用对于掌握Java对象生命周期和JVM内部相关机制非常有帮助。&lt;br&gt;今天我要问你的问题是，&lt;strong&gt;强引用、软引用、弱引用、幻象引用有什么区别？具体使用场景是什么？&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://liangdg.github.io/categories/Java/"/>
+    
+      <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
+    
+    
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+    
+      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="极客的专栏" scheme="https://liangdg.github.io/tags/%E6%9E%81%E5%AE%A2%E7%9A%84%E4%B8%93%E6%A0%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>01谈谈你对Java平台的理解?[笔记]</title>
@@ -34,9 +60,9 @@
       <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
     
     
-      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+    
+      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -45,7 +71,7 @@
     <link href="https://liangdg.github.io/2020/03/03/Java%E6%A0%B8%E5%BF%8336%E8%AE%B203/"/>
     <id>https://liangdg.github.io/2020/03/03/Java核心36讲03/</id>
     <published>2020-03-03T02:05:03.000Z</published>
-    <updated>2020-03-03T08:03:08.031Z</updated>
+    <updated>2020-03-05T11:58:54.631Z</updated>
     
     <summary type="html">
     
@@ -58,9 +84,11 @@
       <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
     
     
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+    
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+      <category term="极客的专栏" scheme="https://liangdg.github.io/tags/%E6%9E%81%E5%AE%A2%E7%9A%84%E4%B8%93%E6%A0%8F/"/>
     
   </entry>
   
@@ -69,7 +97,7 @@
     <link href="https://liangdg.github.io/2020/03/02/Java%E6%A0%B8%E5%BF%8336%E8%AE%B202/"/>
     <id>https://liangdg.github.io/2020/03/02/Java核心36讲02/</id>
     <published>2020-03-02T09:32:46.000Z</published>
-    <updated>2020-03-02T10:20:44.099Z</updated>
+    <updated>2020-03-05T11:58:54.652Z</updated>
     
     <summary type="html">
     
@@ -84,9 +112,11 @@
       <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
     
     
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+    
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+      <category term="极客的专栏" scheme="https://liangdg.github.io/tags/%E6%9E%81%E5%AE%A2%E7%9A%84%E4%B8%93%E6%A0%8F/"/>
     
   </entry>
   
@@ -117,7 +147,7 @@
     <link href="https://liangdg.github.io/2020/03/01/Java%E6%A0%B8%E5%BF%8336%E8%AE%B201/"/>
     <id>https://liangdg.github.io/2020/03/01/Java核心36讲01/</id>
     <published>2020-03-01T07:59:01.000Z</published>
-    <updated>2020-03-02T09:22:21.011Z</updated>
+    <updated>2020-03-05T11:58:54.640Z</updated>
     
     <summary type="html">
     
@@ -131,9 +161,11 @@
       <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
     
     
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+    
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+      <category term="极客的专栏" scheme="https://liangdg.github.io/tags/%E6%9E%81%E5%AE%A2%E7%9A%84%E4%B8%93%E6%A0%8F/"/>
     
   </entry>
   
