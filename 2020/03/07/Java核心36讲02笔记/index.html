@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="今天写点什么呢...">
-<meta name="keywords" content="JAVA,程序员,开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://liangdg.github.io/about/index.html">
+  <meta name="description" content="NoClassDefFoundError和ClassNotFoundException有什么区别">
+<meta name="keywords" content="阅读笔记,Java核心36讲笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02Exception和Error有什么区别[笔记]">
+<meta property="og:url" content="https://liangdg.github.io/2020/03/07/Java核心36讲02笔记/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="今天写点什么呢...">
+<meta property="og:description" content="NoClassDefFoundError和ClassNotFoundException有什么区别">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-23T09:29:06.044Z">
+<meta property="og:updated_time" content="2020-03-06T20:31:53.750Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="今天写点什么呢...">
+<meta name="twitter:title" content="02Exception和Error有什么区别[笔记]">
+<meta name="twitter:description" content="NoClassDefFoundError和ClassNotFoundException有什么区别">
 
 
 
@@ -117,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://liangdg.github.io/about/">
+  <link rel="canonical" href="https://liangdg.github.io/2020/03/07/Java核心36讲02笔记/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>about | 我的博客</title>
+  <title>02Exception和Error有什么区别[笔记] | 我的博客</title>
   
 
 
@@ -304,25 +304,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -370,45 +351,213 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://liangdg.github.io/2020/03/07/Java核心36讲02笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="梁端刚">
+      <meta itemprop="description" content="今天写点什么呢...">
+      <meta itemprop="image" content="/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">about
-
-</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">02Exception和Error有什么区别[笔记]
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-07 03:48:25 / 修改时间：04:31:53" itemprop="dateCreated datePublished" datetime="2020-03-07T03:48:25+08:00">2020-03-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-      </div>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/Java基础专题/" itemprop="url" rel="index"><span itemprop="name">Java基础专题</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2020/03/07/Java核心36讲02笔记/" class="leancloud_visitors" data-flag-title="02Exception和Error有什么区别[笔记]">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>NoClassDefFoundError和ClassNotFoundException有什么区别<br><a id="more"></a> </p>
+<h1 id="NoClassDefFoundError错误发生的原因"><a href="#NoClassDefFoundError错误发生的原因" class="headerlink" title="NoClassDefFoundError错误发生的原因"></a>NoClassDefFoundError错误发生的原因</h1><p>NoClassDefFoundError错误的发生，是因为Java虚拟机在编译时能找到合适的类，而在运行时不能找到合适的类导致的错误。<br>例如在运行时我们想调用某个类的方法或者访问这个类的静态成员的时候，发现这个类不可用，此时Java虚拟机就会抛出NoClassDefFoundError错误。<br>与ClassNotFoundException的不同在于，这个错误发生只在运行时需要加载对应的类不成功，而不是编译时发生。很多Java开发者很容易在这里把这两个错误搞混。<br>简单总结就是，NoClassDefFoundError发生在编译时对应的类可用，而运行时在Java的classpath路径中，对应的类不可用导致的错误。</p>
+<h1 id="NoClassDefFoundError和ClassNotFoundException区别"><a href="#NoClassDefFoundError和ClassNotFoundException区别" class="headerlink" title="NoClassDefFoundError和ClassNotFoundException区别"></a>NoClassDefFoundError和ClassNotFoundException区别</h1><p>我们经常被java.lang.ClassNotFoundException和java.lang.NoClassDefFoundError这两个错误迷惑不清，尽管他们都与Java classpath有关，<br>但是他们完全不同。NoClassDefFoundError发生在JVM在动态运行时，根据你提供的类名，在classpath中找到对应的类进行加载，<br>但当它找不到这个类时，就发生了java.lang.NoClassDefFoundError的错误，而ClassNotFoundException是在编译的时候在classpath中找不到对应的类而发生的错误。<br>ClassNotFoundException比NoClassDefFoundError容易解决，是因为在编译时我们就知道错误发生，并且完全是由于环境的问题导致。<br>而如果你在J2EE的环境下工作，并且得到NoClassDefFoundError的异常，而且对应的错误的类是确实存在的，这说明这个类对于类加载器来说，可能是不可见的。</p>
+<h1 id="怎么解决NoClassDefFoundError错误"><a href="#怎么解决NoClassDefFoundError错误" class="headerlink" title="怎么解决NoClassDefFoundError错误"></a>怎么解决NoClassDefFoundError错误</h1><p>根据前文，很明显NoClassDefFoundError的错误是因为在运行时类加载器在classpath下找不到需要加载的类，<br>所以我们需要把对应的类加载到classpath中，或者检查为什么类在classpath中是不可用的，这个发生可能的原因如下：</p>
+<ul>
+<li>对应的Class在java的classpath中不可用</li>
+<li>你可能用jar命令运行你的程序，但类并没有在jar文件的manifest文件中的classpath属性中定义</li>
+<li>可能程序的启动脚本覆盖了原来的classpath环境变量</li>
+<li>因为NoClassDefFoundError是java.lang.LinkageError的一个子类，所以可能由于程序依赖的原生的类库不可用而导致</li>
+<li>检查日志文件中是否有java.lang.ExceptionInInitializerError这样的错误，NoClassDefFoundError有可能是由于静态初始化失败导致的（这是我遇到的问题的解决办法）</li>
+<li>如果你工作在J2EE的环境，有多个不同的类加载器，也可能导致NoClassDefFoundError。</li>
+<li>NoClassDefFoundError也可能由于类的静态初始化模块错误导致，当你的类执行一些静态初始化模块操作，如果初始化模块抛出异常，哪些依赖这个类的其他类会抛出NoClassDefFoundError的错误。如果你查看程序日志，会发现一些java.lang.ExceptionInInitializerError的错误日志，ExceptionInInitializerError的错误会导致java.lang.NoClassDefFoundError: Could not initialize class</li>
+</ul>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/阅读笔记/" rel="tag"># 阅读笔记</a>
+          
+            <a href="/tags/Java核心36讲笔记/" rel="tag"># Java核心36讲笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/06/Java核心36讲05/" rel="next" title="05String、StringBuffer、StringBuilder有什么区别？[转]">
+                <i class="fa fa-chevron-left"></i> 05String、StringBuffer、StringBuilder有什么区别？[转]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
@@ -437,8 +586,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -537,6 +695,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NoClassDefFoundError错误发生的原因"><span class="nav-number">1.</span> <span class="nav-text">NoClassDefFoundError错误发生的原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NoClassDefFoundError和ClassNotFoundException区别"><span class="nav-number">2.</span> <span class="nav-text">NoClassDefFoundError和ClassNotFoundException区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#怎么解决NoClassDefFoundError错误"><span class="nav-number">3.</span> <span class="nav-text">怎么解决NoClassDefFoundError错误</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1012,38 +1187,37 @@
   
   <script>
     
-    function showTime(Counter) {
-      var entries = [];
+    function addCount(Counter) {
       var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
 
-      $visitors.each(function() {
-        entries.push( $(this).attr('id').trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
         .done(function({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if (countSpan.text() == '') {
-              countSpan.text(0);
-            }
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
           }
         })
         .fail(function ({ responseJSON }) {
@@ -1068,9 +1242,7 @@
             });
           };
           
-            if ($('.post-title-link').length >= 1) {
-              showTime(Counter);
-            }
+            addCount(Counter);
           
         });
     });
