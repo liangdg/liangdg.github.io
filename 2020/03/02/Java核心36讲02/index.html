@@ -105,7 +105,7 @@
 <meta property="og:description" content="世界上存在永远不会出错的程序吗？也许这只会出现在程序员的梦中。随着编程语言和软件的诞生，异常情况就如影随形地纠缠着我们，只有正确处理好意外情况，才能保证程序的可靠性。 Java语言在设计之初就提供了相对完善的异常处理机制，这也是Java得以大行其道的原因之一，因为这种机制大大降低了编写和维护可靠程序的门槛。如今，异常处理机制已经成为现代编程语言的标配。 今天我要问你的问题是，请对比Exceptio">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://liangdg.github.io/2020/03/02/Java核心36讲02/Java的异常类图.jpg">
-<meta property="og:updated_time" content="2020-03-07T22:52:20.119Z">
+<meta property="og:updated_time" content="2020-03-07T23:04:19.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02Exception和Error有什么区别[转]">
 <meta name="twitter:description" content="世界上存在永远不会出错的程序吗？也许这只会出现在程序员的梦中。随着编程语言和软件的诞生，异常情况就如影随形地纠缠着我们，只有正确处理好意外情况，才能保证程序的可靠性。 Java语言在设计之初就提供了相对完善的异常处理机制，这也是Java得以大行其道的原因之一，因为这种机制大大降低了编写和维护可靠程序的门槛。如今，异常处理机制已经成为现代编程语言的标配。 今天我要问你的问题是，请对比Exceptio">
@@ -427,7 +427,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-08 06:52:20" itemprop="dateModified" datetime="2020-03-08T06:52:20+08:00">2020-03-08</time>
+                <time title="修改时间：2020-03-08 07:04:19" itemprop="dateModified" datetime="2020-03-08T07:04:19+08:00">2020-03-08</time>
               
             
           </span>
@@ -521,7 +521,7 @@
 <p><img src="//liangdg.github.io/2020/03/02/Java核心36讲02/Java的异常类图.jpg" alt="Java的异常类图"></p>
 <p>其中有些子类型，最好重点理解一下，比如NoClassDefFoundError和ClassNotFoundException有什么区别，这也是个经典的入门题目。</p>
 <p><strong>第二，理解Java语言中操作Throwable的元素和实践。掌握最基本的语法是必须的，如try-catch-fnally块，throw、throws关键字等。与此同时，也要懂得如何处理典型场景。</strong></p>
-<p>异常处理代码比较繁琐，比如我们需要写很多千篇一律的捕获代码，或者在fnally里面做一些资源回收工作。随着Java语言的发展，引入了一些更加便利的特性，比如try-with￾resources和multiple catch，具体可以参考下面的代码段。在编译时期，会自动生成相应的处理逻辑，比如，自动按照约定俗成close那些扩展了AutoCloseable或者Closeable的对象。</p>
+<p>异常处理代码比较繁琐，比如我们需要写很多千篇一律的捕获代码，或者在fnally里面做一些资源回收工作。随着Java语言的发展，引入了一些更加便利的特性，比如try-with-resources和multiple catch，具体可以参考下面的代码段。在编译时期，会自动生成相应的处理逻辑，比如，自动按照约定俗成close那些扩展了AutoCloseable或者Closeable的对象。</p>
 <pre><code>try (BuferedReader br = new BuferedReader(…);
  BuferedWriter writer = new BuferedWriter(…)) {// Try-with-resources
 // do something
@@ -724,7 +724,7 @@ e.printStackTrace();
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
