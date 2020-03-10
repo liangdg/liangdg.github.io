@@ -105,7 +105,7 @@
 <meta property="og:description" content="我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。 今天我要问你的是有关集合框架方面的问题，对比Vector、ArrayList、LinkedList有何区别？">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://liangdg.github.io/2020/03/10/Java核心36讲08/Java集合框架类图.jpg">
-<meta property="og:updated_time" content="2020-03-10T13:11:19.209Z">
+<meta property="og:updated_time" content="2020-03-10T13:12:20.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="08对比Vector、ArrayList、LinkedList有何区别？[转]">
 <meta name="twitter:description" content="我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。 今天我要问你的是有关集合框架方面的问题，对比Vector、ArrayList、LinkedList有何区别？">
@@ -410,7 +410,7 @@
                 
               
 
-              <time title="创建时间：2020-03-10 20:21:29 / 修改时间：21:11:19" itemprop="dateCreated datePublished" datetime="2020-03-10T20:21:29+08:00">2020-03-10</time>
+              <time title="创建时间：2020-03-10 20:21:29 / 修改时间：21:12:20" itemprop="dateCreated datePublished" datetime="2020-03-10T20:21:29+08:00">2020-03-10</time>
             
 
             
@@ -531,11 +531,12 @@
 <li>HashSet则是利用哈希算法，理想情况下，如果哈希散列正常，可以提供常数时间的添加、删除、包含等操作，但是它不保证有序。</li>
 <li>LinkedHashSet，内部构建了一个记录插入顺序的双向链表，因此提供了按照插入顺序遍历的能力，与此同时，也保证了常数时间的添加、删除、包含等操作，这些操作性能略低于HashSet，因为需要维护链表的开销。</li>
 <li>在遍历元素时，HashSet性能受自身容量影响，所以初始化时，除非有必要，不然不要将其背后的HashMap容量设置过大。而对于LinkedHashSet，由于其内部链表提供的方便，遍历性能只和元素多少有关系。</li>
-<li><p>我今天介绍的这些集合类，都不是线程安全的，对于java.util.concurrent里面的线程安全容器，我在专栏后面会去介绍。但是，并不代表这些集合完全不能支持并发编程的场景，<br>在Collections工具类中，提供了一系列的synchronized方法，比如</p>
-<p>  satic <t> List<t> synchronizedList(List<t> list)<br>我们完全可以利用类似方法来实现基本的线程安全集合：</t></t></t></p>
-<p>  List list = Collections.synchronizedList(new ArrayList());<br>它的实现，基本就是将每个基本方法，比如get、set、add之类，都通过synchronizd添加基本的同步支持，非常简单粗暴，但也非常实用。注意这些方法创建的线程安全集合，都符合迭代时fail-fast行为，当发生意外的并发修改时，尽早抛出ConcurrentModifcationException异常，以避免不可预计的行为。</p>
-</li>
 </ul>
+<p>我今天介绍的这些集合类，都不是线程安全的，对于java.util.concurrent里面的线程安全容器，我在专栏后面会去介绍。但是，并不代表这些集合完全不能支持并发编程的场景，<br>在Collections工具类中，提供了一系列的synchronized方法，比如</p>
+<pre><code>satic &lt;T&gt; List&lt;T&gt; synchronizedList(List&lt;T&gt; list)
+</code></pre><p>我们完全可以利用类似方法来实现基本的线程安全集合：</p>
+<pre><code>List list = Collections.synchronizedList(new ArrayList());
+</code></pre><p>它的实现，基本就是将每个基本方法，比如get、set、add之类，都通过synchronizd添加基本的同步支持，非常简单粗暴，但也非常实用。注意这些方法创建的线程安全集合，都符合迭代时fail-fast行为，当发生意外的并发修改时，尽早抛出ConcurrentModifcationException异常，以避免不可预计的行为。</p>
 <p>另外一个经常会被考察到的问题，就是理解Java提供的默认排序算法，具体是什么排序方式以及设计思路等。<br>这个问题本身就是有点陷阱的意味，因为需要区分是Arrays.sort()还是Collections.sort() （底层是调用Arrays.sort()）；什么数据类型；多大的数据集（太小的数据集，复杂排序是没必要的，Java会直接进行二分插入排序）等。</p>
 <p>对于原始数据类型，目前使用的是所谓双轴快速排序（Dual-Pivot QuickSort），是一种改进的快速排序算法，早期版本是相对传统的快速排序，你可以阅读源码。</p>
 <p>而对于对象数据类型，目前则是使用TimeSort，思想上也是一种归并和二分插入排序（binarySort）结合的优化排序算法。TimSeort并不是Java的独创，简单说它的思路是查找数据集中已经排好序的分区（这里叫run），然后合并这些分区来达到排序的目的。</p>
