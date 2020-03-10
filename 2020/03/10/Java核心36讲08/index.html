@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。 今天我要问你的是有关集合框架方面的问题，对比Vector、ArrayList、LinkedList有何区别？ 典型回">
+  <meta name="description" content="我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。 今天我要问你的是有关集合框架方面的问题，对比Vector、ArrayList、LinkedList有何区别？">
 <meta name="keywords" content="阅读笔记,Java核心36讲,极客的专栏,Java集合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="08对比Vector、ArrayList、LinkedList有何区别？[转]">
 <meta property="og:url" content="https://liangdg.github.io/2020/03/10/Java核心36讲08/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。 今天我要问你的是有关集合框架方面的问题，对比Vector、ArrayList、LinkedList有何区别？ 典型回">
+<meta property="og:description" content="我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。 今天我要问你的是有关集合框架方面的问题，对比Vector、ArrayList、LinkedList有何区别？">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://liangdg.github.io/2020/03/10/Java核心36讲08/Java集合框架类图.jpg">
-<meta property="og:updated_time" content="2020-03-10T13:07:59.693Z">
+<meta property="og:updated_time" content="2020-03-10T13:11:19.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="08对比Vector、ArrayList、LinkedList有何区别？[转]">
-<meta name="twitter:description" content="我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。 今天我要问你的是有关集合框架方面的问题，对比Vector、ArrayList、LinkedList有何区别？ 典型回">
+<meta name="twitter:description" content="我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。 今天我要问你的是有关集合框架方面的问题，对比Vector、ArrayList、LinkedList有何区别？">
 <meta name="twitter:image" content="https://liangdg.github.io/2020/03/10/Java核心36讲08/Java集合框架类图.jpg">
 
 
@@ -410,7 +410,7 @@
                 
               
 
-              <time title="创建时间：2020-03-10 20:21:29 / 修改时间：21:07:59" itemprop="dateCreated datePublished" datetime="2020-03-10T20:21:29+08:00">2020-03-10</time>
+              <time title="创建时间：2020-03-10 20:21:29 / 修改时间：21:11:19" itemprop="dateCreated datePublished" datetime="2020-03-10T20:21:29+08:00">2020-03-10</time>
             
 
             
@@ -486,7 +486,7 @@
 
       
         <p>我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。</p>
-<p>今天我要问你的是有关集合框架方面的问题，<strong>对比Vector、ArrayList、LinkedList有何区别？</strong></p>
+<p>今天我要问你的是有关集合框架方面的问题，<strong>对比Vector、ArrayList、LinkedList有何区别？</strong><br><a id="more"></a> </p>
 <h1 id="典型回答"><a href="#典型回答" class="headerlink" title="典型回答"></a>典型回答</h1><p>这三者都是实现集合框架中的List，也就是所谓的<strong>有序集合</strong>，因此具体功能也比较近似，比如都提供按照位置进行定位、添加或者删除的操作，都提供迭代器以遍历其内容等。但因为具体的设计区别，<strong>在行为、性能、线程安全等方面，表现又有很大不同。</strong></p>
 <ul>
 <li>Vector是Java早期提供的<strong>线程安全的动态数组</strong>，如果不需要线程安全，并不建议选择，毕竟同步是有额外开销的。Vector内部是使用对象数组来保存数据，可以根据需要自动的增加容量，当数组已满时，会创建新的数组，并拷贝原有数组数据。</li>
