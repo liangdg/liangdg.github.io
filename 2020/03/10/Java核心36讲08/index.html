@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="世界上存在永远不会出错的程序吗？也许这只会出现在程序员的梦中。随着编程语言和软件的诞生，异常情况就如影随形地纠缠着我们，只有正确处理好意外情况，才能保证程序的可靠性。 Java语言在设计之初就提供了相对完善的异常处理机制，这也是Java得以大行其道的原因之一，因为这种机制大大降低了编写和维护可靠程序的门槛。如今，异常处理机制已经成为现代编程语言的标配。 今天我要问你的问题是，请对比Exceptio">
-<meta name="keywords" content="阅读笔记,Java核心36讲,极客的专栏,异常">
+  <meta name="description" content="我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。 今天我要问你的是有关集合框架方面的问题，对比Vector、ArrayList、LinkedList有何区别？ 典型回">
+<meta name="keywords" content="阅读笔记,Java核心36讲,极客的专栏,Java集合">
 <meta property="og:type" content="article">
-<meta property="og:title" content="02Exception和Error有什么区别[转]">
-<meta property="og:url" content="https://liangdg.github.io/2020/03/02/Java核心36讲02/index.html">
+<meta property="og:title" content="Java核心36讲08">
+<meta property="og:url" content="https://liangdg.github.io/2020/03/10/Java核心36讲08/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="世界上存在永远不会出错的程序吗？也许这只会出现在程序员的梦中。随着编程语言和软件的诞生，异常情况就如影随形地纠缠着我们，只有正确处理好意外情况，才能保证程序的可靠性。 Java语言在设计之初就提供了相对完善的异常处理机制，这也是Java得以大行其道的原因之一，因为这种机制大大降低了编写和维护可靠程序的门槛。如今，异常处理机制已经成为现代编程语言的标配。 今天我要问你的问题是，请对比Exceptio">
+<meta property="og:description" content="我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。 今天我要问你的是有关集合框架方面的问题，对比Vector、ArrayList、LinkedList有何区别？ 典型回">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://liangdg.github.io/2020/03/02/Java核心36讲02/Java的异常类图.jpg">
-<meta property="og:updated_time" content="2020-03-07T23:04:19.374Z">
+<meta property="og:image" content="https://liangdg.github.io/2020/03/10/Java核心36讲08/Java集合框架类图.jpg">
+<meta property="og:updated_time" content="2020-03-10T12:54:03.422Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="02Exception和Error有什么区别[转]">
-<meta name="twitter:description" content="世界上存在永远不会出错的程序吗？也许这只会出现在程序员的梦中。随着编程语言和软件的诞生，异常情况就如影随形地纠缠着我们，只有正确处理好意外情况，才能保证程序的可靠性。 Java语言在设计之初就提供了相对完善的异常处理机制，这也是Java得以大行其道的原因之一，因为这种机制大大降低了编写和维护可靠程序的门槛。如今，异常处理机制已经成为现代编程语言的标配。 今天我要问你的问题是，请对比Exceptio">
-<meta name="twitter:image" content="https://liangdg.github.io/2020/03/02/Java核心36讲02/Java的异常类图.jpg">
+<meta name="twitter:title" content="Java核心36讲08">
+<meta name="twitter:description" content="我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。 今天我要问你的是有关集合框架方面的问题，对比Vector、ArrayList、LinkedList有何区别？ 典型回">
+<meta name="twitter:image" content="https://liangdg.github.io/2020/03/10/Java核心36讲08/Java集合框架类图.jpg">
 
 
 
@@ -119,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="https://liangdg.github.io/2020/03/02/Java核心36讲02/">
+  <link rel="canonical" href="https://liangdg.github.io/2020/03/10/Java核心36讲08/">
 
 
 
@@ -129,7 +129,7 @@
   };
 </script>
 
-  <title>02Exception和Error有什么区别[转] | 我的博客</title>
+  <title>Java核心36讲08 | 我的博客</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://liangdg.github.io/2020/03/02/Java核心36讲02/">
+    <link itemprop="mainEntityOfPage" href="https://liangdg.github.io/2020/03/10/Java核心36讲08/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="梁端刚">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">02Exception和Error有什么区别[转]
+          <h1 class="post-title" itemprop="name headline">Java核心36讲08
 
               
             
@@ -410,24 +410,12 @@
                 
               
 
-              <time title="创建时间：2020-03-02 17:32:46" itemprop="dateCreated datePublished" datetime="2020-03-02T17:32:46+08:00">2020-03-02</time>
+              <time title="创建时间：2020-03-10 20:21:29 / 修改时间：20:54:03" itemprop="dateCreated datePublished" datetime="2020-03-10T20:21:29+08:00">2020-03-10</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-03-08 07:04:19" itemprop="dateModified" datetime="2020-03-08T07:04:19+08:00">2020-03-08</time>
               
             
           </span>
@@ -466,7 +454,7 @@
 
           
           
-            <span id="/2020/03/02/Java核心36讲02/" class="leancloud_visitors" data-flag-title="02Exception和Error有什么区别[转]">
+            <span id="/2020/03/10/Java核心36讲08/" class="leancloud_visitors" data-flag-title="Java核心36讲08">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -497,108 +485,79 @@
       
 
       
-        <p>世界上存在永远不会出错的程序吗？也许这只会出现在程序员的梦中。随着编程语言和软件的诞生，异常情况就如影随形地纠缠着我们，只有正确处理好意外情况，才能保证程序的可靠性。</p>
-<p>Java语言在设计之初就提供了相对完善的异常处理机制，这也是Java得以大行其道的原因之一，因为这种机制大大降低了编写和维护可靠程序的门槛。如今，异常处理机制已经成为现代编程语言的标配。</p>
-<p>今天我要问你的问题是，<strong>请对比Exception和Error，另外，运行时异常与一般异常有什么区别？</strong><br><a id="more"></a> </p>
-<h1 id="典型回答"><a href="#典型回答" class="headerlink" title="典型回答"></a>典型回答</h1><ul>
-<li>Exception和Error都是继承了Throwable类，在Java中只有Throwable类型的实例才可以被抛出（throw）或者捕获（catch），它是异常处理机制的基本组成类型。</li>
-<li>Exception和Error体现了Java平台设计者对不同异常情况的分类。<ul>
-<li>Exception是程序正常运行中，可以预料的意外情况，可能并且应该被捕获，进行相应处理。</li>
-<li>Error是指在正常情况下，不大可能出现的情况，绝大部分的Error都会导致程序（比如JVM自身）处于非正常的、不可恢复状态。既然是非正常情况，所以不便于也不需要捕获，常见的比如OutOfMemoryError之类，都是Error的子类。</li>
-</ul>
-</li>
-<li>Exception又分为可检查（checked）异常和不检查（unchecked）异常，<ul>
-<li>可检查异常在源代码里必须显式地进行捕获处理，这是编译期检查的一部分。</li>
-<li>前面我介绍的不可查的Error，是Throwable不是Exception。</li>
-<li>不检查异常就是所谓的运行时异常，类似 NullPointerException、ArrayIndexOutOfBoundsException之类，通常是可以编码避免的逻辑错误，具体根据需要来判断是否需要捕获，并不会在编译期强制要求。</li>
-</ul>
-</li>
-</ul>
-<h1 id="考点分析"><a href="#考点分析" class="headerlink" title="考点分析"></a>考点分析</h1><p>分析Exception和Error的区别，是从概念角度考察了Java处理机制。总的来说，还处于理解的层面，面试者只要阐述清楚就好了。</p>
-<p>我们在日常编程中，如何处理好异常是比较考验功底的，我觉得需要掌握两个方面。</p>
-<p><strong>第一，理解Throwable、Exception、Error的设计和分类。比如，掌握那些应用最为广泛的子类，以及如何自定义异常等。</strong></p>
-<p>很多面试官会进一步追问一些细节，比如，你了解哪些Error、Exception或者RuntimeException？我画了一个简单的类图，并列出来典型例子，可以给你作为参考，至少做到基本心里有数。</p>
-<p><img src="//liangdg.github.io/2020/03/02/Java核心36讲02/Java的异常类图.jpg" alt="Java的异常类图"></p>
-<p>其中有些子类型，最好重点理解一下，比如NoClassDefFoundError和ClassNotFoundException有什么区别，这也是个经典的入门题目。</p>
-<p><strong>第二，理解Java语言中操作Throwable的元素和实践。掌握最基本的语法是必须的，如try-catch-fnally块，throw、throws关键字等。与此同时，也要懂得如何处理典型场景。</strong></p>
-<p>异常处理代码比较繁琐，比如我们需要写很多千篇一律的捕获代码，或者在fnally里面做一些资源回收工作。随着Java语言的发展，引入了一些更加便利的特性，比如try-with-resources和multiple catch，具体可以参考下面的代码段。在编译时期，会自动生成相应的处理逻辑，比如，自动按照约定俗成close那些扩展了AutoCloseable或者Closeable的对象。</p>
-<pre><code>try (BuferedReader br = new BuferedReader(…);
- BuferedWriter writer = new BuferedWriter(…)) {// Try-with-resources
-// do something
-catch ( IOException | XEception e) {// Multiple catch
- // Handle it
-} 
-</code></pre><h1 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h1><p>前面谈的大多是概念性的东西，下面我来谈些实践中的选择，我会结合一些代码用例进行分析。</p>
-<p><strong>先开看第一个吧</strong>，下面的代码反映了异常处理中哪些不当之处？</p>
-<pre><code>try {
- // 业务代码
- // …
- Thread.sleep(1000L);
-} catch (Exception e) {
- // Ignore it
-}
-</code></pre><p>这段代码虽然很短，但是已经违反了<strong>异常处理的两个基本原则</strong>。</p>
+        <p>我们在日常的工作中，能够高效地管理和操作数据是非常重要的。由于每个编程语言支持的数据结构不尽相同，比如我最早学习的C语言，需要自己实现很多基础数据结构，管理和操作会比较麻烦。相比之下，Java则要方便的多，针对通用场景的需求，Java提供了强大的集合框架，大大提高了开发者的生产力。</p>
+<p>今天我要问你的是有关集合框架方面的问题，<strong>对比Vector、ArrayList、LinkedList有何区别？</strong></p>
+<h1 id="典型回答"><a href="#典型回答" class="headerlink" title="典型回答"></a>典型回答</h1><p>这三者都是实现集合框架中的List，也就是所谓的<strong>有序集合</strong>，因此具体功能也比较近似，比如都提供按照位置进行定位、添加或者删除的操作，都提供迭代器以遍历其内容等。但因为具体的设计区别，<strong>在行为、性能、线程安全等方面，表现又有很大不同。</strong></p>
 <ul>
-<li>第一，尽量不要捕获类似Exception这样的通用异常，而是应该捕获特定异常，在这里是Thread.sleep()抛出的InterruptedException。</li>
+<li>Vector是Java早期提供的<strong>线程安全的动态数组</strong>，如果不需要线程安全，并不建议选择，毕竟同步是有额外开销的。Vector内部是使用对象数组来保存数据，可以根据需要自动的增加容量，当数组已满时，会创建新的数组，并拷贝原有数组数据。</li>
+<li>ArrayList是应用更加广泛的<strong>动态数组实现</strong>，它<strong>本身不是线程安全的</strong>，所以性能要好很多。与Vector近似，ArrayList也是可以根据需要调整容量，不过两者的调整逻辑有所区别，<strong>Vector在扩容时会提高1倍，而ArrayList则是增加50%</strong>。</li>
+<li>LinkedList顾名思义是<strong>Java提供的双向链表</strong>，所以它<strong>不需要</strong>像上面两种那样<strong>调整容量</strong>，它也<strong>不是线程安全的</strong>。</li>
 </ul>
-<p>这是因为在日常的开发和合作中，我们读代码的机会往往超过写代码，软件工程是门协作的艺术，所以我们有义务让自己的代码能够直观地体现出尽量多的信息，而泛泛的Exception之类，恰恰隐藏了我们的目的。另外，我们也要保证程序不会捕获到我们不希望捕获的异常。比如，你可能更希望RuntimeException被扩散出来，而不是被捕获。<br>进一步讲，除非深思熟虑了，否则不要捕获Throwable或者Error，这样很难保证我们能够正确程序处理OutOfMemoryError。</p>
+<h1 id="考点分析"><a href="#考点分析" class="headerlink" title="考点分析"></a>考点分析</h1><p>似乎从我接触Java开始，这个问题就一直是经典的面试题，前面我的回答覆盖了三者的一些基本的设计和实现。<br>一般来说，也可以补充一下不同容器类型适合的场景：</p>
 <ul>
-<li>第二，不要生吞（swallow）异常。这是异常处理中要特别注意的事情，因为很可能会导致非常难以诊断的诡异情况。</li>
+<li>Vector和ArrayList作为动态数组，其内部元素以数组形式顺序存储的，所以非常适合随机访问的场合。除了尾部插入和删除元素，往往性能会相对较差，比如我们在中间位置插入一个元素，需要移动后续所有元素。</li>
+<li>而LinkedList进行节点插入、删除却要高效得多，但是随机访问性能则要比动态数组慢。</li>
 </ul>
-<p>生吞异常，往往是基于假设这段代码可能不会发生，或者感觉忽略异常是无所谓的，但是千万不要在产品代码做这种假设！<br>如果我们不把异常抛出来，或者也没有输出到日志（Logger）之类，程序可能在后续代码以不可控的方式结束。没人能够轻易判断究竟是哪里抛出了异常，以及是什么原因产生了异常。</p>
-<p><strong>再来看看第二段代码</strong></p>
-<pre><code>try {
- // 业务代码
- // …
-} catch (IOException e) {
-e.printStackTrace();
-}
-</code></pre><p>这段代码作为一段实验代码，它是没有任何问题的，但是在产品代码中，通常都不允许这样处理。你先思考一下这是为什么呢？</p>
-<p>我们先来看看printStackTrace()的文档，开头就是“Prints this throwable and its backtrace to the standard error stream”。问题就在这里，<strong>在稍微复杂一点的生产系统中，标准出错（STERR）不是个合适的输出选项，因为你很难判断出到底输出到哪里去了</strong>。</p>
-<p>尤其是对于分布式系统，如果发生异常，但是无法找到堆栈轨迹（stacktrace），这纯属是为诊断设置障碍。所以，最好使用产品日志，详细地输出到日志系统里。</p>
-<p>我们<strong>接下来看下面的代码段，体会一下Throw early, catch late原则</strong>。</p>
-<pre><code>public void readPreferences(String fleName){
- //...perform operations... 
- InputStream in = new FileInputStream(fleName);
- //...read the preferences fle...
-}
-</code></pre><p>如果fleName是null，那么程序就会抛出NullPointerException，但是由于没有第一时间暴露出问题，堆栈信息可能非常令人费解，往往需要相对复杂的定位。这个NPE只是作为例子，实际产品代码中，可能是各种情况，比如获取配置失败之类的。在发现问题的时候，第一时间抛出，能够更加清晰地反映问题。</p>
-<p>我们可以修改一下，让问题“throw early”，对应的异常信息就非常直观了。</p>
-<pre><code>public void readPreferences(String flename) {
- Objects. requireNonNull(flename);
- //...perform other operations... 
- InputStream in = new FileInputStream(flename);
- //...read the preferences fle...
-}
-</code></pre><p>至于“catch late”，其实是我们经常苦恼的问题，捕获异常后，需要怎么处理呢？最差的处理方式，就是我前面提到的“生吞异常”，本质上其实是掩盖问题。如果实在不知道如何处理，可以选择保留原有异常的cause信息，直接再抛出或者构建新的异常抛出去。在更高层面，因为有了清晰的（业务）逻辑，往往会更清楚合适的处理方式是什么。</p>
-<p>有的时候，我们会根据需要自定义异常，这个时候除了保证提供足够的信息，还有两点需要考虑：</p>
+<p>所以，在应用开发中，如果事先可以估计到，应用操作是偏向于插入、删除，还是随机访问较多，就可以针对性的进行选择。这也是面试最常见的一个考察角度，给定一个场景，选择适合的数据结构，所以对于这种典型选择一定要掌握清楚。</p>
+<p>考察Java集合框架，我觉得有很多方面需要掌握：</p>
 <ul>
-<li>是否需要定义成Checked Exception，因为这种类型设计的初衷更是为了从异常情况恢复，作为异常设计者，我们往往有充足信息进行分类。</li>
-<li>在保证诊断信息足够的同时，也要考虑避免包含敏感信息，因为那样可能导致潜在的安全问题。<ul>
-<li>如果我们看Java的标准类库，你可能注意到类似java.net.ConnectException，出错信息是类似“ Connection refused (Connection refused)”，而不包含具体的机器名、IP、端口等，</li>
-<li>一个重要考量就是信息安全。类似的情况在日志中也有，比如，用户数据一般是不可以输出到日志里面的。</li>
+<li>Java集合框架的设计结构，至少要有一个整体印象。</li>
+<li>Java提供的主要容器（集合和Map）类型，了解或掌握对应的数据结构、算法，思考具体技术选择。</li>
+<li>将问题扩展到性能、并发等领域。</li>
+<li>集合框架的演进与发展。</li>
 </ul>
+<p>作为Java专栏，我会在尽量围绕Java相关进行扩展，否则光是罗列集合部分涉及的数据结构就要占用很大篇幅。这并不代表那些不重要，数据结构和算法是基本功，往往也是必考的点，有些公司甚至以考察这些方面而非常知名（甚至是“臭名昭著”）。我这里以需要掌握<strong>典型排序算法</strong>为例，你至少需要熟知：</p>
+<ul>
+<li>内部排序，至少掌握基础算法如归并排序、交换排序（冒泡、快排）、选择排序、插入排序等。</li>
+<li>外部排序，掌握利用内存和外部存储处理超大数据集，至少要理解过程和思路。</li>
+<li>考察算法不仅仅是如何简单实现，面试官往往会刨根问底，比如哪些是排序是不稳定的呢（快排、堆排），或者思考稳定意味着什么；对不同数据集，各种排序的最好或最差情况；</li>
+<li>从某个角度如何进一步优化（比如空间占用，假设业务场景需要最小辅助空间，这个角度堆排序就比归并优异）等，从简单的了解，到进一步的思考，面试官通常还会观察面试者处理问题和沟通时的思路。</li>
+</ul>
+<p>以上只是一个方面的例子，建议学习相关书籍，如《算法导论》《编程珠玑》等，或相关教程。对于特定领域，比如推荐系统，建议咨询领域专家。单纯从面试的角度，很多朋友推荐使用一些算法网站如LeetCode等，帮助复习和准备面试，但坦白说我并没有刷过这些算法题，这也是仁者见仁智者见智的事情，招聘时我更倾向于考察面试者自身最擅长的东西，免得招到纯面试高手。</p>
+<h1 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h1><p>我们先一起来理解集合框架的整体设计，为了有个直观的印象，我画了一个简要的类图。注意，为了避免混淆，我这里没有把java.util.concurrent下面的线程安全容器添加进来；<br>也没有列出Map容器，虽然通常概念上我们也会把Map作为集合框架的一部分，但是它本身并不是真正的集合（Collection）。</p>
+<p><img src="//liangdg.github.io/2020/03/10/Java核心36讲08/Java集合框架类图.jpg" alt="Java集合框架类图"></p>
+<p>所以，我今天<strong>主要围绕狭义的集合框架</strong>，其他都会在专栏后面的内容进行讲解。</p>
+<p>我们可以看到Java的集合框架，Collection接口是所有集合的根，然后扩展开提供了三大类集合，分别是：</p>
+<ul>
+<li><strong>List</strong>，也就是我们前面介绍最多的<strong>有序集合</strong>，它提供了方便的访问、插入、删除等操作。</li>
+<li>Set，<strong>Set是不允许重复元素的</strong>，这是和List最明显的区别，也就是不存在两个对象equals返回true。我们在日常开发中有很多需要保证元素唯一性的场合。</li>
+<li><strong>Queue/Deque，则是Java提供的标准队列结构的实现</strong>，除了集合的基本功能，它还支持类似先入先出（FIFO， First-in-First-Out）或者后入先出（LIFO，Last-In-First-Out）等特定行为。这里不包括BlockingQueue，因为通常是并发编程场合，所以被放置在并发包里。</li>
+</ul>
+<p>每种集合的通用逻辑，都被抽象到相应的抽象类之中，比如AbstractList就集中了各种List操作的通用部分。这些集合不是完全孤立的，比如，LinkedList本身，既是List，也是Deque哦。</p>
+<p>如果阅读过更多源码，你会发现，其实，TreeSet代码里实际默认是利用TreeMap实现的，Java类库创建了一个Dummy对象“PRESENT”作为value，然后所有插入的元素其实是以键的形式放入了TreeMap里面；同理，HashSet其实也是以HashMap为基础实现的，原来他们只是Map类的马甲！</p>
+<p>就像前面提到过的，我们需要对各种具体集合实现，至少了解基本特征和典型使用场景，以Set的几个实现为例：</p>
+<ul>
+<li>TreeSet支持自然顺序访问，但是添加、删除、包含等操作要相对低效（log(n)时间）。</li>
+<li>HashSet则是利用哈希算法，理想情况下，如果哈希散列正常，可以提供常数时间的添加、删除、包含等操作，但是它不保证有序。</li>
+<li>LinkedHashSet，内部构建了一个记录插入顺序的双向链表，因此提供了按照插入顺序遍历的能力，与此同时，也保证了常数时间的添加、删除、包含等操作，这些操作性能略低于HashSet，因为需要维护链表的开销。</li>
+<li>在遍历元素时，HashSet性能受自身容量影响，所以初始化时，除非有必要，不然不要将其背后的HashMap容量设置过大。而对于LinkedHashSet，由于其内部链表提供的方便，遍历性能只和元素多少有关系。</li>
+<li><p>我今天介绍的这些集合类，都不是线程安全的，对于java.util.concurrent里面的线程安全容器，我在专栏后面会去介绍。但是，并不代表这些集合完全不能支持并发编程的场景，<br>在Collections工具类中，提供了一系列的synchronized方法，比如</p>
+<p>  satic <t> List<t> synchronizedList(List<t> list)<br>我们完全可以利用类似方法来实现基本的线程安全集合：</t></t></t></p>
+<p>  List list = Collections.synchronizedList(new ArrayList());<br>它的实现，基本就是将每个基本方法，比如get、set、add之类，都通过synchronizd添加基本的同步支持，非常简单粗暴，但也非常实用。注意这些方法创建的线程安全集合，都符合迭代时fail-fast行为，当发生意外的并发修改时，尽早抛出ConcurrentModifcationException异常，以避免不可预计的行为。</p>
 </li>
 </ul>
-<p>业界有一种争论（甚至可以算是某种程度的共识），Java语言的Checked Exception也许是个设计错误，反对者列举了几点：<br>Checked Exception的假设是我们捕获了异常，然后恢复程序。但是，其实我们大多数情况下，根本就不可能恢复。Checked Exception的使用，已经大大偏离了最初的设计目的。<br>Checked Exception不兼容functional编程，如果你写过Lambda/Stream代码，相信深有体会。</p>
-<p>很多开源项目，已经采纳了这种实践，比如Spring、Hibernate等，甚至反映在新的编程语言设计中，比如Scala等。 如果有兴趣，你可以参考：<br><a href="http://literatejava.com/exceptions/checked-exceptions-javas-biggest-mistake/" target="_blank" rel="noopener">http://literatejava.com/exceptions/checked-exceptions-javas-biggest-mistake/</a> 。</p>
-<p>当然，很多人也觉得没有必要矫枉过正，因为确实有一些异常，比如和环境相关的IO、网络等，其实是存在可恢复性的，而且Java已经通过业界的海量实践，证明了其构建高质量软件的能力。我就不再进一步解读了，感兴趣的同学可以点击链接，观看Bruce Eckel在2018年全球软件开发大会QCon的分享Failing at Failing: How and Why We’ve Been Nonchalantly Moving Away From Exception Handling。</p>
-<p><strong>我们从性能角度来审视一下Java的异常处理机制，这里有两个可能会相对昂贵的地方：</strong></p>
+<p>另外一个经常会被考察到的问题，就是理解Java提供的默认排序算法，具体是什么排序方式以及设计思路等。<br>这个问题本身就是有点陷阱的意味，因为需要区分是Arrays.sort()还是Collections.sort() （底层是调用Arrays.sort()）；什么数据类型；多大的数据集（太小的数据集，复杂排序是没必要的，Java会直接进行二分插入排序）等。</p>
+<p>对于原始数据类型，目前使用的是所谓双轴快速排序（Dual-Pivot QuickSort），是一种改进的快速排序算法，早期版本是相对传统的快速排序，你可以阅读源码。</p>
+<p>而对于对象数据类型，目前则是使用TimeSort，思想上也是一种归并和二分插入排序（binarySort）结合的优化排序算法。TimSeort并不是Java的独创，简单说它的思路是查找数据集中已经排好序的分区（这里叫run），然后合并这些分区来达到排序的目的。</p>
+<p>另外，Java 8引入了并行排序算法（直接使用parallelSort方法），这是为了充分利用现代多核处理器的计算能力，底层实现基于fork-join框架（专栏后面会对fork-join进行相对详细的介绍），当处理的数据集比较小的时候，差距不明显，甚至还表现差一点；但是，当数据集增长到数万或百万以上时，提高就非常大了，具体还是取决于处理器和系统环境。</p>
+<p>排序算法仍然在不断改进，最近双轴快速排序实现的作者提交了一个更进一步的改进，历时多年的研究，目前正在审核和验证阶段。根据作者的性能测试对比，相比于基于归并排序的实现，新改进可以提高随机数据排序速度提高10%～20%，甚至在其他特征的数据集上也有几倍的提高，有兴趣的话你可以参考具体代码和介绍：<br><a href="http://mail.openjdk.java.net/pipermail/core-libs-dev/2018-January/051000.html" target="_blank" rel="noopener">http://mail.openjdk.java.net/pipermail/core-libs-dev/2018-January/051000.html</a> 。</p>
+<p>在Java 8之中，Java平台支持了Lambda和Stream，相应的Java集合框架也进行了大范围的增强，以支持类似为集合创建相应stream或者parallelStream的方法实现，我们可以非常方便的实现函数式代码。</p>
+<p>阅读Java源代码，你会发现，这些API的设计和实现比较独特，它们并不是实现在抽象类里面，而是以默认方法的形式实现在Collection这样的接口里！这是Java 8在语言层面的新特性，允许接口实现默认方法，理论上来说，我们原来实现在类似Collections这种工具类中的方法，大多可以转换到相应的接口上。针对这一点，我在面向对象主题，会专门梳理Java语言面向对象基本机制的演进。</p>
+<p>在Java 9中，Java标准类库提供了一系列的静态工厂方法，比如，List.of()、Set.of()，大大简化了构建小的容器实例的代码量。根据业界实践经验，我们发现相当一部分集合实例都是容量非常有限的，而且在生命周期中并不会进行修改。但是，在原有的Java类库中，我们可能不得不写成：</p>
+<pre><code>ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+list.add(&quot;Hello&quot;);
+list.add(&quot;World&quot;);
+</code></pre><p>而利用新的容器静态工厂方法，一句代码就够了，并且保证了不可变性。</p>
+<pre><code>List&lt;String&gt; simpleList = List.of(&quot;Hello&quot;,&quot;world&quot;);
+</code></pre><p>更进一步，通过各种of静态工厂方法创建的实例，还应用了一些我们所谓的最佳实践，比如，它是不可变的，符合我们对线程安全的需求；它因为不需要考虑扩容，所以空间上更加紧凑等。</p>
+<p>如果我们去看of方法的源码，你还会发现一个特别有意思的地方：我们知道Java已经支持所谓的可变参数（varargs），但是官方类库还是提供了一系列特定参数长度的方法，看起来似乎非常不优雅，为什么呢？这其实是为了最优的性能，JVM在处理变长参数的时候会有明显的额外开销，如果你需要实现性能敏感的API，也可以进行参考。</p>
+<p>今天</p>
 <ul>
-<li><strong>try-catch代码段会产生额外的性能开销</strong>，或者换个角度说，它往往会影响JVM对代码进行优化，所以建议仅捕获有必要的代码段，尽量不要一个大的try包住整段的代码；与此同时，利用异常控制代码流程，也不是一个好主意，远比我们通常意义上的条件语句（if/else、switch）要低效。</li>
-<li><strong>Java每实例化一个Exception，都会对当时的栈进行快照，这是一个相对比较重的操作。</strong>如果发生的非常频繁，这个开销可就不能被忽略了。</li>
+<li>我从Verctor、ArrayList、LinkedList开始，逐步分析其设计实现区别、适合的应用场景等，</li>
+<li>并进一步对集合框架进行了简单的归纳，介绍了集合框架从基础算法到API设计实现的各种改进，希望能对你的日常开发和API设计能够有帮助。</li>
 </ul>
-<p>所以，对于部分追求极致性能的底层类库，有种方式是尝试创建不进行栈快照的Exception。这本身也存在争议，因为这样做的假设在于，我创建异常时知道未来是否需要堆栈。问题是，实际上可能吗？小范围或许可能，但是在大规模项目中，这么做可能不是个理智的选择。如果需要堆栈，但又没有收集这些信息，在复杂情况下，尤其是类似微服务这种分布式系统，这会大大增加诊断的难度。</p>
-<p>当我们的服务出现反应变慢、吞吐量下降的时候，检查发生最频繁的Exception也是一种思路。关于诊断后台变慢的问题，我会在后面的Java性能基础模块中系统探讨。</p>
-<p>今天，我</p>
-<ol>
-<li>从一个常见的异常处理概念问题，简单总结了Java异常处理的机制。</li>
-<li>并结合代码，分析了一些普遍认可的最佳实践，以及业界最新的一些异常使用共识。</li>
-<li>最后，我分析了异常性能开销，希望对你有所帮助。</li>
-</ol>
-<h1 id="一课一练"><a href="#一课一练" class="headerlink" title="一课一练"></a>一课一练</h1><p>关于今天我们讨论的题目你做到心中有数了吗？可以思考一个问题，对于异常处理编程，不同的编程范式也会影响到异常处理策略，比如，现在非常火热的反应式编程（Reactive Stream），因为其本身是异步、基于事件机制的，所以出现异常情况，决不能简单抛出去；另外，由于代码堆栈不再是同步调用那种垂直的结构，这里的异常处理和日志需要更加小心，我们看到的往往是特定executor的堆栈，而不是业务方法调用关系。对于这种情况，你有什么好的办法吗？</p>
-<p>请你在留言区分享一下你的解决方案，我会选出经过认真思考的留言，送给你一份学习鼓励金，欢迎你与我一起讨论。</p>
-<p>你的朋友是不是也在准备面试呢？你可以“请朋友读”，把今天的题目分享给好友，或许你能帮到他。</p>
+<h1 id="一课一练"><a href="#一课一练" class="headerlink" title="一课一练"></a>一课一练</h1><p>关于今天我们讨论的题目你做到心中有数了吗？留一道思考题给你，先思考一个应用场景，比如你需要实现一个云计算任务调度系统，希望可以保证VIP客户的任务被优先处理，你可以利用哪些数据结构或者标准的集合类型呢？更进一步讲，类似场景大多是基于什么数据结构呢？</p>
+<p>请你在留言区写写你对这个问题的思考，我会选出经过认真思考的留言，送给你一份学习鼓励金，欢迎你与我一起讨论。<br>你的朋友是不是也在准备面试呢？你可以“请朋友读”，把今天的题目分享给好友，或许你能帮到他。</p>
 
       
     </div>
@@ -628,7 +587,7 @@ e.printStackTrace();
           
             <a href="/tags/极客的专栏/" rel="tag"># 极客的专栏</a>
           
-            <a href="/tags/异常/" rel="tag"># 异常</a>
+            <a href="/tags/Java集合/" rel="tag"># Java集合</a>
           
         </div>
       
@@ -641,8 +600,8 @@ e.printStackTrace();
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/02/Java三种编译方式/" rel="next" title="Java三种编译方式">
-                <i class="fa fa-chevron-left"></i> Java三种编译方式
+              <a href="/2020/03/09/Java核心36讲07/" rel="next" title="07int和Integer有什么区别？[转]">
+                <i class="fa fa-chevron-left"></i> 07int和Integer有什么区别？[转]
               </a>
             
           </div>
@@ -650,10 +609,6 @@ e.printStackTrace();
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/03/Java核心36讲03/" rel="prev" title="03谈谈final、finally、 finalize有什么不同？[转]">
-                03谈谈final、finally、 finalize有什么不同？[转] <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
