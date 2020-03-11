@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://liangdg.github.io/2020/03/11/Java核心36讲09/Map的简单类图.jpg">
 <meta property="og:image" content="https://liangdg.github.io/2020/03/11/Java核心36讲09/HashMap的内部结构.jpg">
-<meta property="og:updated_time" content="2020-03-11T13:42:01.772Z">
+<meta property="og:updated_time" content="2020-03-11T13:44:51.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="09对比Hashtable、HashMap、TreeMap有什么不同？[转]">
 <meta name="twitter:description" content="Map是广义Java集合框架中的另外一部分，HashMap作为框架中使用频率最高的类型之一，它本身以及相关类型自然也是面试考察的热点。今天我要问你的问题是，对比Hashtable、HashMap、TreeMap有什么不同？谈谈你对HashMap的掌握。">
@@ -411,7 +411,7 @@
                 
               
 
-              <time title="创建时间：2020-03-11 21:12:52 / 修改时间：21:42:01" itemprop="dateCreated datePublished" datetime="2020-03-11T21:12:52+08:00">2020-03-11</time>
+              <time title="创建时间：2020-03-11 21:12:52 / 修改时间：21:44:51" itemprop="dateCreated datePublished" datetime="2020-03-11T21:12:52+08:00">2020-03-11</time>
             
 
             
@@ -603,7 +603,7 @@ public class LinkedHashMapSample {
 </code></pre><p>具体键值对在哈希表中的位置（数组index）取决于下面的位运算：</p>
 <pre><code>i = (n - 1) &amp; hash
 </code></pre><p>仔细观察哈希值的源头，我们会发现，它并不是key本身的hashCode，而是来自于HashMap内部的另外一个hash方法。注意，为什么这里需要将高位数据移位到低位进行异或运算呢？这是因为有些数据计算出的哈希值差异主要在高位，而HashMap里的哈希寻址是忽略容量以上的高位的，那么这种处理就可以有效避免类似情况下的哈希碰撞。</p>
-<pre><code>satic fnal int hash(Object kye) {
+<pre><code>satic final int hash(Object kye) {
     int h;
     return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt;16;
 }
