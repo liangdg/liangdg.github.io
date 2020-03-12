@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="世界上存在永远不会出错的程序吗？也许这只会出现在程序员的梦中。随着编程语言和软件的诞生，异常情况就如影随形地纠缠着我们，只有正确处理好意外情况，才能保证程序的可靠性。 Java语言在设计之初就提供了相对完善的异常处理机制，这也是Java得以大行其道的原因之一，因为这种机制大大降低了编写和维护可靠程序的门槛。如今，异常处理机制已经成为现代编程语言的标配。 今天我要问你的问题是，请对比Exceptio">
-<meta name="keywords" content="阅读笔记,Java核心36讲,极客的专栏,异常">
+  <meta name="description" content="我在之前两讲介绍了Java集合框架的典型容器类，它们绝大部分都不是线程安全的，仅有的线程安全实现，比如Vector、Stack，在性能方面也远不尽如人意。幸好Java语言提供了并发包（java.util.concurrent），为高度并发需求提供了更加全面的工具支持。 今天我要问你的问题是，如何保证容器是线程安全的？ConcurrentHashMap如何实现高效地线程安全？">
+<meta name="keywords" content="阅读笔记,Java核心36讲,极客的专栏,Java集合">
 <meta property="og:type" content="article">
-<meta property="og:title" content="02Exception和Error有什么区别[转]">
-<meta property="og:url" content="https://liangdg.github.io/2020/03/02/Java核心36讲02/index.html">
+<meta property="og:title" content="10如何保证集合是线程安全的? ConcurrentHashMap如何实现高效地线程安全？[转]">
+<meta property="og:url" content="https://liangdg.github.io/2020/03/12/Java核心36讲10/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="世界上存在永远不会出错的程序吗？也许这只会出现在程序员的梦中。随着编程语言和软件的诞生，异常情况就如影随形地纠缠着我们，只有正确处理好意外情况，才能保证程序的可靠性。 Java语言在设计之初就提供了相对完善的异常处理机制，这也是Java得以大行其道的原因之一，因为这种机制大大降低了编写和维护可靠程序的门槛。如今，异常处理机制已经成为现代编程语言的标配。 今天我要问你的问题是，请对比Exceptio">
+<meta property="og:description" content="我在之前两讲介绍了Java集合框架的典型容器类，它们绝大部分都不是线程安全的，仅有的线程安全实现，比如Vector、Stack，在性能方面也远不尽如人意。幸好Java语言提供了并发包（java.util.concurrent），为高度并发需求提供了更加全面的工具支持。 今天我要问你的问题是，如何保证容器是线程安全的？ConcurrentHashMap如何实现高效地线程安全？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://liangdg.github.io/2020/03/02/Java核心36讲02/Java的异常类图.jpg">
-<meta property="og:updated_time" content="2020-03-07T23:04:19.374Z">
+<meta property="og:image" content="https://liangdg.github.io/2020/03/12/Java核心36讲10/早期ConcurrentHashMap内部结构的示意图.jpg">
+<meta property="og:updated_time" content="2020-03-12T15:02:27.263Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="02Exception和Error有什么区别[转]">
-<meta name="twitter:description" content="世界上存在永远不会出错的程序吗？也许这只会出现在程序员的梦中。随着编程语言和软件的诞生，异常情况就如影随形地纠缠着我们，只有正确处理好意外情况，才能保证程序的可靠性。 Java语言在设计之初就提供了相对完善的异常处理机制，这也是Java得以大行其道的原因之一，因为这种机制大大降低了编写和维护可靠程序的门槛。如今，异常处理机制已经成为现代编程语言的标配。 今天我要问你的问题是，请对比Exceptio">
-<meta name="twitter:image" content="https://liangdg.github.io/2020/03/02/Java核心36讲02/Java的异常类图.jpg">
+<meta name="twitter:title" content="10如何保证集合是线程安全的? ConcurrentHashMap如何实现高效地线程安全？[转]">
+<meta name="twitter:description" content="我在之前两讲介绍了Java集合框架的典型容器类，它们绝大部分都不是线程安全的，仅有的线程安全实现，比如Vector、Stack，在性能方面也远不尽如人意。幸好Java语言提供了并发包（java.util.concurrent），为高度并发需求提供了更加全面的工具支持。 今天我要问你的问题是，如何保证容器是线程安全的？ConcurrentHashMap如何实现高效地线程安全？">
+<meta name="twitter:image" content="https://liangdg.github.io/2020/03/12/Java核心36讲10/早期ConcurrentHashMap内部结构的示意图.jpg">
 
 
 
@@ -119,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="https://liangdg.github.io/2020/03/02/Java核心36讲02/">
+  <link rel="canonical" href="https://liangdg.github.io/2020/03/12/Java核心36讲10/">
 
 
 
@@ -129,7 +129,7 @@
   };
 </script>
 
-  <title>02Exception和Error有什么区别[转] | 我的博客</title>
+  <title>10如何保证集合是线程安全的? ConcurrentHashMap如何实现高效地线程安全？[转] | 我的博客</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://liangdg.github.io/2020/03/02/Java核心36讲02/">
+    <link itemprop="mainEntityOfPage" href="https://liangdg.github.io/2020/03/12/Java核心36讲10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="梁端刚">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">02Exception和Error有什么区别[转]
+          <h1 class="post-title" itemprop="name headline">10如何保证集合是线程安全的? ConcurrentHashMap如何实现高效地线程安全？[转]
 
               
             
@@ -410,24 +410,12 @@
                 
               
 
-              <time title="创建时间：2020-03-02 17:32:46" itemprop="dateCreated datePublished" datetime="2020-03-02T17:32:46+08:00">2020-03-02</time>
+              <time title="创建时间：2020-03-12 22:31:31 / 修改时间：23:02:27" itemprop="dateCreated datePublished" datetime="2020-03-12T22:31:31+08:00">2020-03-12</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-03-08 07:04:19" itemprop="dateModified" datetime="2020-03-08T07:04:19+08:00">2020-03-08</time>
               
             
           </span>
@@ -466,7 +454,7 @@
 
           
           
-            <span id="/2020/03/02/Java核心36讲02/" class="leancloud_visitors" data-flag-title="02Exception和Error有什么区别[转]">
+            <span id="/2020/03/12/Java核心36讲10/" class="leancloud_visitors" data-flag-title="10如何保证集合是线程安全的? ConcurrentHashMap如何实现高效地线程安全？[转]">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -497,108 +485,205 @@
       
 
       
-        <p>世界上存在永远不会出错的程序吗？也许这只会出现在程序员的梦中。随着编程语言和软件的诞生，异常情况就如影随形地纠缠着我们，只有正确处理好意外情况，才能保证程序的可靠性。</p>
-<p>Java语言在设计之初就提供了相对完善的异常处理机制，这也是Java得以大行其道的原因之一，因为这种机制大大降低了编写和维护可靠程序的门槛。如今，异常处理机制已经成为现代编程语言的标配。</p>
-<p>今天我要问你的问题是，<strong>请对比Exception和Error，另外，运行时异常与一般异常有什么区别？</strong><br><a id="more"></a> </p>
-<h1 id="典型回答"><a href="#典型回答" class="headerlink" title="典型回答"></a>典型回答</h1><ul>
-<li>Exception和Error都是继承了Throwable类，在Java中只有Throwable类型的实例才可以被抛出（throw）或者捕获（catch），它是异常处理机制的基本组成类型。</li>
-<li>Exception和Error体现了Java平台设计者对不同异常情况的分类。<ul>
-<li>Exception是程序正常运行中，可以预料的意外情况，可能并且应该被捕获，进行相应处理。</li>
-<li>Error是指在正常情况下，不大可能出现的情况，绝大部分的Error都会导致程序（比如JVM自身）处于非正常的、不可恢复状态。既然是非正常情况，所以不便于也不需要捕获，常见的比如OutOfMemoryError之类，都是Error的子类。</li>
+        <p>我在之前两讲介绍了Java集合框架的典型容器类，它们绝大部分都不是线程安全的，仅有的线程安全实现，比如Vector、Stack，在性能方面也远不尽如人意。幸好Java语言提供了并发包（java.util.concurrent），为高度并发需求提供了更加全面的工具支持。</p>
+<p>今天我要问你的问题是，<strong>如何保证容器是线程安全的？ConcurrentHashMap如何实现高效地线程安全？</strong><br><a id="more"></a></p>
+<h1 id="典型回答"><a href="#典型回答" class="headerlink" title="典型回答"></a>典型回答</h1><p>Java提供了不同层面的线程安全支持。在传统集合框架内部，除了Hashtable等同步容器，还提供了所谓的同步包装器（Synchronized Wrapper），我们可以调用Collections工具类提供的包装方法，来获取一个同步的包装容器（如Collections.synchronizedMap），但是它们都是利用非常粗粒度的同步方式，在高并发情况下，性能比较低下。</p>
+<p>另外，更加普遍的选择是利用并发包提供的线程安全容器类，它提供了：各种并发容器，比如ConcurrentHashMap、CopyOnWriteArrayList。各种线程安全队列（Queue/Deque），如ArrayBlockingQueue、SynchronousQueue。各种有序容器的线程安全版本等。</p>
+<p>具体保证线程安全的方式，包括有从简单的synchronize方式，到基于更加精细化的，比如基于分离锁实现的ConcurrentHashMap等并发实现等。具体选择要看开发的场景需求，</p>
+<p>总体来说，并发包内提供的容器通用场景，远优于早期的简单同步实现。</p>
+<h1 id="考点分析"><a href="#考点分析" class="headerlink" title="考点分析"></a>考点分析</h1><p>谈到线程安全和并发，可以说是Java面试中必考的考点，我上面给出的回答是一个相对宽泛的总结，而且ConcurrentHashMap等并发容器实现也在不断演进，不能一概而论。</p>
+<p>如果要深入思考并回答这个问题及其扩展方面，至少需要：</p>
+<ul>
+<li>理解基本的线程安全工具。</li>
+<li>理解传统集合框架并发编程中Map存在的问题，清楚简单同步方式的不足。</li>
+<li>梳理并发包内，尤其是ConcurrentHashMap采取了哪些方法来提高并发表现。</li>
+<li>最好能够掌握ConcurrentHashMap自身的演进，目前的很多分析资料还是基于其早期版本。</li>
 </ul>
-</li>
-<li>Exception又分为可检查（checked）异常和不检查（unchecked）异常，<ul>
-<li>可检查异常在源代码里必须显式地进行捕获处理，这是编译期检查的一部分。</li>
-<li>前面我介绍的不可查的Error，是Throwable不是Exception。</li>
-<li>不检查异常就是所谓的运行时异常，类似 NullPointerException、ArrayIndexOutOfBoundsException之类，通常是可以编码避免的逻辑错误，具体根据需要来判断是否需要捕获，并不会在编译期强制要求。</li>
+<p>今天我主要是延续专栏之前两讲的内容，重点解读经常被同时考察的HashMap和ConcurrentHashMap。今天这一讲并不是对并发方面的全面梳理，毕竟这也不是专栏一讲可以介绍完整的，算是个开胃菜吧，类似CAS等更加底层的机制，后面会在Java进阶模块中的并发主题有更加系统的介绍。</p>
+<h1 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h1><p><strong>1.为什么需要ConcurrentHashMap？</strong><br>Hashtable本身比较低效，因为它的实现基本就是将put、get、size等各种方法加上“synchronized”。简单来说，这就导致了所有并发操作都要竞争同一把锁，一个线程在进行同步操作时，其他线程只能等待，大大降低了并发操作的效率。</p>
+<p>前面已经提过HashMap不是线程安全的，并发情况会导致类似CPU占用100%等一些问题，那么能不能利用Collections提供的同步包装器来解决问题呢？</p>
+<p>看看下面的代码片段，我们发现同步包装器只是利用输入Map构造了另一个同步版本，所有操作虽然不再声明成为synchronized方法，但是还是利用了“this”作为互斥的mutex，没有真正意义上的改进！</p>
+<pre><code>private satic class SynchronizedMap&lt;K,V&gt;
+
+     implements Map&lt;K,V&gt;, Serializable {
+     private fnal Map&lt;K,V&gt; m; // Backing Map
+         fnal Object mutex; // Object on which to synchronize
+         // …
+         public int size() {
+             synchronized (mutex) {return m.size();
+         }
+     }
+     // … 
+}
+</code></pre><p>所以，Hashtable或者同步包装版本，都只是适合在非高度并发的场景下。</p>
+<p><strong>2.ConcurrentHashMap分析</strong><br>我们再来看看ConcurrentHashMap是如何设计实现的，为什么它能大大提高并发效率。</p>
+<p>首先，我这里强调，ConcurrentHashMap的设计实现其实一直在演化，比如在Java 8中就发生了非常大的变化（Java 7其实也有不少更新），所以，<strong>我这里将比较分析结构、实现机制等方面，对比不同版本的主要区别。</strong></p>
+<p>早期ConcurrentHashMap，其实现是基于：<br>分离锁，也就是将内部进行分段（Segment），里面则是HashEntry的数组，和HashMap类似，哈希相同的条目也是以链表形式存放。</p>
+<p>HashEntry内部使用volatile的value字段来保证可见性，也利用了不可变对象的机制以改进利用Unsafe提供的底层能力，比如volatile access，去直接完成部分操作，以最优化性能，毕竟Unsafe中的很多操作都是JVM intrinsic优化过的。</p>
+<p>你可以参考下面这个早期ConcurrentHashMap内部结构的示意图，其核心是利用分段设计，在进行并发操作的时候，只需要锁定相应段，这样就有效避免了类似Hashtable整体同步的问题，大大提高了性能。<br><img src="//liangdg.github.io/2020/03/12/Java核心36讲10/早期ConcurrentHashMap内部结构的示意图.jpg" alt="早期ConcurrentHashMap内部结构的示意图"></p>
+<p>在构造的时候，Segment的数量由所谓的concurrentcyLevel决定，默认是16，也可以在相应构造函数直接指定。注意，Java需要它是2的幂数值，如果输入是类似15这种非幂值，会被自动调整到16之类2的幂数值。</p>
+<p>具体情况，我们一起看看一些Map基本操作的源码，这是JDK 7比较新的get代码。针对具体的优化部分，为方便理解，我直接注释在代码段里，get操作需要保证的是可见性，所以并没有什么同步逻辑。</p>
+<pre><code>public V get(Object key) {
+     Segment&lt;K,V&gt; s; // manually integrate access methods to reduce overhead
+     HashEntry&lt;K,V&gt;[] tab;
+     int h = hash(key.hashCode());
+     //利用位操作替换普通数学运算
+     long u = (((h &gt;&gt;&gt; segmentShift) &amp; segmentMask) &lt;&lt; SSHIFT) + SBASE;
+     // 以Segment为单位，进行定位
+     // 利用Unsafe直接进行volatile access
+     if ((s = (Segment&lt;K,V&gt;)UNSAFE.getObjectVolatile(segments, u)) != null &amp;&amp;
+         (tab = s.table) != null) {
+         //省略
+     }
+     return null;
+ }
+</code></pre><p>而对于put操作，首先是通过二次哈希避免哈希冲突，然后以Unsafe调用方式，直接获取相应的Segment，然后进行线程安全的put操作：</p>
+<pre><code>public V put(K key, V value) {
+    Segment&lt;K,V&gt; s;
+    if (value == null)
+    throw new NullPointerException();
+    // 二次哈希，以保证数据的分散性，避免哈希冲突
+    int hash = hash(key.hashCode());
+    int j = (hash &gt;&gt;&gt; segmentShift) &amp; segmentMask;
+    if ((s = (Segment&lt;K,V&gt;)UNSAFE.getObject // nonvolatile; recheck(segments, (j &lt;&lt;         SSHIFT) + SBASE)) == null) // in ensureSegment
+        s = ensureSegment(j);
+    return s.put(key, hash, value, false);
+}
+</code></pre><p>其核心逻辑实现在下面的内部方法中：</p>
+<pre><code>final V put(K key, int hash, V value, boolean onlyIfAbsent) {
+     // scanAndLockForPut会去查找是否有key相同Node
+     // 无论如何，确保获取锁
+     HashEntry&lt;K,V&gt; node = tryLock() ? null :
+     scanAndLockForPut(key, hash, value);
+     V oldValue;
+     try {
+         HashEntry&lt;K,V&gt;[] tab = table;
+         int index = (tab.length - 1) &amp; hash;
+         HashEntry&lt;K,V&gt; frs = entryAt(tab, index);
+         for (HashEntry&lt;K,V&gt; e = frs;;) {
+             if (e != null) {
+                 K k;
+                 // 更新已有value...
+             }
+             else {
+                 // 放置HashEntry到特定位置，如果超过阈值，进行rehash
+                 // ...
+             }
+         }
+     } finally {
+          unlock();
+     }
+      return oldValue;
+ }
+</code></pre><p>所以，从上面的源码清晰的看出，在进行并发写操作时：<br>ConcurrentHashMap会获取再入锁，以保证数据一致性，Segment本身就是基于ReentrantLock的扩展实现，所以，在并发修改期间，相应Segment是被锁定的。</p>
+<p>在最初阶段，进行重复性的扫描，以确定相应key值是否已经在数组里面，进而决定是更新还是放置操作，你可以在代码里看到相应的注释。重复扫描、检测冲突是ConcurrentHashMap的常见技巧。</p>
+<p>我在专栏上一讲介绍HashMap时，提到了可能发生的扩容问题，在ConcurrentHashMap中同样存在。不过有一个明显区别，就是它进行的不是整体的扩容，而是单独对Segment进行扩容，细节就不介绍了。</p>
+<p>另外一个Map的size方法同样需要关注，它的实现涉及分离锁的一个副作用。</p>
+<p>试想，如果不进行同步，简单的计算所有Segment的总值，可能会因为并发put，导致结果不准确，但是直接锁定所有Segment进行计算，就会变得非常昂贵。其实，分离锁也限制了Map的初始化等操作。</p>
+<p>所以，ConcurrentHashMap的实现是通过重试机制（RETRIES_BEFORE_LOCK，指定重试次数2），来试图获得可靠值。如果没有监控到发生变化（通过对比Segment.modCount），就直接返回，否则获取锁进行操作。</p>
+<p>下面我来对比一下，在Java 8和之后的版本中，ConcurrentHashMap发生了哪些变化呢？<br>总体结构上，它的内部存储变得和我在专栏上一讲介绍的HashMap结构非常相似，同样是大的桶（bucket）数组，然后内部也是一个个所谓的链表结构（bin），同步的粒度要更细致一些。</p>
+<ul>
+<li>其内部仍然有Segment定义，但仅仅是为了保证序列化时的兼容性而已，不再有任何结构上的用处。<br>因为不再使用Segment，初始化操作大大简化，修改为lazy-load形式，这样可以有效避免初始开销，解决了老版本很多人抱怨的这一点。</li>
+<li>数据存储利用volatile来保证可见性。</li>
+<li>使用CAS等操作，在特定场景进行无锁并发操作。</li>
+<li>使用Unsafe、LongAdder之类底层手段，进行极端情况的优化。</li>
 </ul>
-</li>
-</ul>
-<h1 id="考点分析"><a href="#考点分析" class="headerlink" title="考点分析"></a>考点分析</h1><p>分析Exception和Error的区别，是从概念角度考察了Java处理机制。总的来说，还处于理解的层面，面试者只要阐述清楚就好了。</p>
-<p>我们在日常编程中，如何处理好异常是比较考验功底的，我觉得需要掌握两个方面。</p>
-<p><strong>第一，理解Throwable、Exception、Error的设计和分类。比如，掌握那些应用最为广泛的子类，以及如何自定义异常等。</strong></p>
-<p>很多面试官会进一步追问一些细节，比如，你了解哪些Error、Exception或者RuntimeException？我画了一个简单的类图，并列出来典型例子，可以给你作为参考，至少做到基本心里有数。</p>
-<p><img src="//liangdg.github.io/2020/03/02/Java核心36讲02/Java的异常类图.jpg" alt="Java的异常类图"></p>
-<p>其中有些子类型，最好重点理解一下，比如NoClassDefFoundError和ClassNotFoundException有什么区别，这也是个经典的入门题目。</p>
-<p><strong>第二，理解Java语言中操作Throwable的元素和实践。掌握最基本的语法是必须的，如try-catch-fnally块，throw、throws关键字等。与此同时，也要懂得如何处理典型场景。</strong></p>
-<p>异常处理代码比较繁琐，比如我们需要写很多千篇一律的捕获代码，或者在fnally里面做一些资源回收工作。随着Java语言的发展，引入了一些更加便利的特性，比如try-with-resources和multiple catch，具体可以参考下面的代码段。在编译时期，会自动生成相应的处理逻辑，比如，自动按照约定俗成close那些扩展了AutoCloseable或者Closeable的对象。</p>
-<pre><code>try (BuferedReader br = new BuferedReader(…);
- BuferedWriter writer = new BuferedWriter(…)) {// Try-with-resources
-// do something
-catch ( IOException | XEception e) {// Multiple catch
- // Handle it
+<p>先看看现在的数据存储内部实现，我们可以发现Key是fnal的，因为在生命周期中，一个条目的Key发生变化是不可能的；与此同时val，则声明为volatile，以保证可见性。<br>     satic class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; {<br>         fnal int hash;<br>         fnal K key;<br>         volatile V val;<br>         volatile Node&lt;K,V&gt; next;<br>         // …<br>     }<br>我这里就不再介绍get方法和构造函数了，相对比较简单，直接看并发的put是如何实现的。</p>
+<pre><code>final V putVal(K key, V value, boolean onlyIfAbsent) {
+     if (key == null || value == null) 
+         throw new NullPointerException();
+     int hash = spread(key.hashCode());
+     int binCount = 0;
+     for (Node&lt;K,V&gt;[] tab = table;;) {
+          Node&lt;K,V&gt; f; int n, i, fh; K fk; V fv;
+         if (tab == null || (n = tab.length) == 0)
+             tab = initTable();
+         else if ((f = tabAt(tab, i = (n - 1) &amp; hash)) == null) {
+             // 利用CAS去进行无锁线程安全操作，如果bin是空的
+             if (casTabAt(tab, i, null, new Node&lt;K,V&gt;(hash, key, value)))
+                 break; 
+          }
+         else if ((fh = f.hash) == MOVED)
+             tab = helpTransfer(tab, f);
+         else if (onlyIfAbsent // 不加锁，进行检查
+                 &amp;&amp; fh == hash
+                 &amp;&amp; ((fk = f.key) == key || (fk != null &amp;&amp; key.equals(fk)))
+                 &amp;&amp; (fv = f.val) != null)
+             return fv;
+         else {
+             V oldVal = null;
+             synchronized (f) {
+                 // 细粒度的同步修改操作... 
+             }
+             // Bin超过阈值，进行树化
+             if (binCount != 0) {
+                  if (binCount &gt;= TREEIFY_THRESHOLD)
+                      treeifyBin(tab, i);
+                  if (oldVal != null)
+                      return oldVal;
+                 break;
+              }    
+         }
+      }
+     addCount(1L, binCount);
+     return null;
+}
+</code></pre><p>初始化操作实现在initTable里面，这是一个典型的CAS使用场景，利用volatile的sizeCtl作为互斥手段：如果发现竞争性的初始化，就spin在那里，等待条件恢复；否则利用CAS设置排他标志。如果成功则进行初始化；否则重试。<br>请参考下面代码：</p>
+<pre><code>private final Node&lt;K,V&gt;[] initTable() {
+     Node&lt;K,V&gt;[] tab; int sc;
+     while ((tab = table) == null || tab.length == 0) {
+         // 如果发现冲突，进行spin等待
+         if ((sc = sizeCtl) &lt; 0)
+             Thread.yield(); 
+             // CAS成功返回true，则进入真正的初始化逻辑
+         else if (U.compareAndSetInt(this, SIZECTL, sc, -1)) {
+             try {
+                 if ((tab = table) == null || tab.length == 0) {
+                     int n = (sc &gt; 0) ? sc : DEFAULT_CAPACITY;
+                     @SuppressWarnings(&quot;unchecked&quot;)
+                     Node&lt;K,V&gt;[] nt = (Node&lt;K,V&gt;[])new Node&lt;?,?&gt;[n];
+                     table = tab = nt;
+                     sc = n - (n &gt;&gt;&gt; 2);
+                 }
+             } finally {
+                 sizeCtl = sc;
+             }
+             break;
+         }
+     }
+     return tab;
 } 
-</code></pre><h1 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h1><p>前面谈的大多是概念性的东西，下面我来谈些实践中的选择，我会结合一些代码用例进行分析。</p>
-<p><strong>先开看第一个吧</strong>，下面的代码反映了异常处理中哪些不当之处？</p>
-<pre><code>try {
- // 业务代码
- // …
- Thread.sleep(1000L);
-} catch (Exception e) {
- // Ignore it
+</code></pre><p>当bin为空时，同样是没有必要锁定，也是以CAS操作去放置。<br>你有没有注意到，在同步逻辑上，它使用的是synchronized，而不是通常建议的ReentrantLock之类，这是为什么呢？现代JDK中，synchronized已经被不断优化，可以不再过分担心性能差异，另外，相比于ReentrantLock，它可以减少内存消耗，这是个非常大的优势。</p>
+<p>与此同时，更多细节实现通过使用Unsafe进行了优化，例如tabAt就是直接利用getObjectAcquire，避免间接调用的开销。</p>
+<pre><code>satic fnal &lt;K,V&gt; Node&lt;K,V&gt; tabAt(Node&lt;K,V&gt;[] tab, int i) {
+     return (Node&lt;K,V&gt;)U.getObjectAcquire(tab, ((long)i &lt;&lt; ASHIFT) + ABASE);
 }
-</code></pre><p>这段代码虽然很短，但是已经违反了<strong>异常处理的两个基本原则</strong>。</p>
-<ul>
-<li>第一，尽量不要捕获类似Exception这样的通用异常，而是应该捕获特定异常，在这里是Thread.sleep()抛出的InterruptedException。</li>
-</ul>
-<p>这是因为在日常的开发和合作中，我们读代码的机会往往超过写代码，软件工程是门协作的艺术，所以我们有义务让自己的代码能够直观地体现出尽量多的信息，而泛泛的Exception之类，恰恰隐藏了我们的目的。另外，我们也要保证程序不会捕获到我们不希望捕获的异常。比如，你可能更希望RuntimeException被扩散出来，而不是被捕获。<br>进一步讲，除非深思熟虑了，否则不要捕获Throwable或者Error，这样很难保证我们能够正确程序处理OutOfMemoryError。</p>
-<ul>
-<li>第二，不要生吞（swallow）异常。这是异常处理中要特别注意的事情，因为很可能会导致非常难以诊断的诡异情况。</li>
-</ul>
-<p>生吞异常，往往是基于假设这段代码可能不会发生，或者感觉忽略异常是无所谓的，但是千万不要在产品代码做这种假设！<br>如果我们不把异常抛出来，或者也没有输出到日志（Logger）之类，程序可能在后续代码以不可控的方式结束。没人能够轻易判断究竟是哪里抛出了异常，以及是什么原因产生了异常。</p>
-<p><strong>再来看看第二段代码</strong></p>
-<pre><code>try {
- // 业务代码
- // …
-} catch (IOException e) {
-e.printStackTrace();
+</code></pre><p>再看看，现在是如何实现size操作的。阅读代码你会发现，真正的逻辑是在sumCount方法中， 那么sumCount做了什么呢？</p>
+<pre><code>final long sumCount() {
+     CounterCell[] as = counterCells; CounterCell a;
+     long sum = baseCount;
+     if (as != null) {
+         for (int i = 0; i &lt; as.length; ++i) {
+             if ((a = as[i]) != null)
+             sum += a.value;
+         }
+     }
+     return sum;
 }
-</code></pre><p>这段代码作为一段实验代码，它是没有任何问题的，但是在产品代码中，通常都不允许这样处理。你先思考一下这是为什么呢？</p>
-<p>我们先来看看printStackTrace()的文档，开头就是“Prints this throwable and its backtrace to the standard error stream”。问题就在这里，<strong>在稍微复杂一点的生产系统中，标准出错（STERR）不是个合适的输出选项，因为你很难判断出到底输出到哪里去了</strong>。</p>
-<p>尤其是对于分布式系统，如果发生异常，但是无法找到堆栈轨迹（stacktrace），这纯属是为诊断设置障碍。所以，最好使用产品日志，详细地输出到日志系统里。</p>
-<p>我们<strong>接下来看下面的代码段，体会一下Throw early, catch late原则</strong>。</p>
-<pre><code>public void readPreferences(String fleName){
- //...perform operations... 
- InputStream in = new FileInputStream(fleName);
- //...read the preferences fle...
+</code></pre><p>我们发现，虽然思路仍然和以前类似，都是分而治之的进行计数，然后求和处理，但实现却基于一个奇怪的CounterCell。 难道它的数值，就更加准确吗？数据一致性是怎么保证的？</p>
+<pre><code>satic fnal class CounterCell {
+     volatile long value;
+     CounterCell(long x) { value = x; }
 }
-</code></pre><p>如果fleName是null，那么程序就会抛出NullPointerException，但是由于没有第一时间暴露出问题，堆栈信息可能非常令人费解，往往需要相对复杂的定位。这个NPE只是作为例子，实际产品代码中，可能是各种情况，比如获取配置失败之类的。在发现问题的时候，第一时间抛出，能够更加清晰地反映问题。</p>
-<p>我们可以修改一下，让问题“throw early”，对应的异常信息就非常直观了。</p>
-<pre><code>public void readPreferences(String flename) {
- Objects. requireNonNull(flename);
- //...perform other operations... 
- InputStream in = new FileInputStream(flename);
- //...read the preferences fle...
-}
-</code></pre><p>至于“catch late”，其实是我们经常苦恼的问题，捕获异常后，需要怎么处理呢？最差的处理方式，就是我前面提到的“生吞异常”，本质上其实是掩盖问题。如果实在不知道如何处理，可以选择保留原有异常的cause信息，直接再抛出或者构建新的异常抛出去。在更高层面，因为有了清晰的（业务）逻辑，往往会更清楚合适的处理方式是什么。</p>
-<p>有的时候，我们会根据需要自定义异常，这个时候除了保证提供足够的信息，还有两点需要考虑：</p>
+</code></pre><p>其实，对于CounterCell的操作，是基于java.util.concurrent.atomic.LongAdder进行的，是一种JVM利用空间换取更高效率的方法，利用了Striped64内部的复杂逻辑。这个东西非常小众，大多数情况下，建议还是使用AtomicLong，足以满足绝大部分应用的性能需求。</p>
+<p>今天</p>
 <ul>
-<li>是否需要定义成Checked Exception，因为这种类型设计的初衷更是为了从异常情况恢复，作为异常设计者，我们往往有充足信息进行分类。</li>
-<li>在保证诊断信息足够的同时，也要考虑避免包含敏感信息，因为那样可能导致潜在的安全问题。<ul>
-<li>如果我们看Java的标准类库，你可能注意到类似java.net.ConnectException，出错信息是类似“ Connection refused (Connection refused)”，而不包含具体的机器名、IP、端口等，</li>
-<li>一个重要考量就是信息安全。类似的情况在日志中也有，比如，用户数据一般是不可以输出到日志里面的。</li>
+<li>我从线程安全问题开始，概念性的总结了基本容器工具，</li>
+<li>分析了早期同步容器的问题，</li>
+<li>进而分析了Java 7和Java 8中ConcurrentHashMap是如何设计实现的，希望ConcurrentHashMap的并发技巧对你在日常开发可以有所帮助。</li>
 </ul>
-</li>
-</ul>
-<p>业界有一种争论（甚至可以算是某种程度的共识），Java语言的Checked Exception也许是个设计错误，反对者列举了几点：<br>Checked Exception的假设是我们捕获了异常，然后恢复程序。但是，其实我们大多数情况下，根本就不可能恢复。Checked Exception的使用，已经大大偏离了最初的设计目的。<br>Checked Exception不兼容functional编程，如果你写过Lambda/Stream代码，相信深有体会。</p>
-<p>很多开源项目，已经采纳了这种实践，比如Spring、Hibernate等，甚至反映在新的编程语言设计中，比如Scala等。 如果有兴趣，你可以参考：<br><a href="http://literatejava.com/exceptions/checked-exceptions-javas-biggest-mistake/" target="_blank" rel="noopener">http://literatejava.com/exceptions/checked-exceptions-javas-biggest-mistake/</a> 。</p>
-<p>当然，很多人也觉得没有必要矫枉过正，因为确实有一些异常，比如和环境相关的IO、网络等，其实是存在可恢复性的，而且Java已经通过业界的海量实践，证明了其构建高质量软件的能力。我就不再进一步解读了，感兴趣的同学可以点击链接，观看Bruce Eckel在2018年全球软件开发大会QCon的分享Failing at Failing: How and Why We’ve Been Nonchalantly Moving Away From Exception Handling。</p>
-<p><strong>我们从性能角度来审视一下Java的异常处理机制，这里有两个可能会相对昂贵的地方：</strong></p>
-<ul>
-<li><strong>try-catch代码段会产生额外的性能开销</strong>，或者换个角度说，它往往会影响JVM对代码进行优化，所以建议仅捕获有必要的代码段，尽量不要一个大的try包住整段的代码；与此同时，利用异常控制代码流程，也不是一个好主意，远比我们通常意义上的条件语句（if/else、switch）要低效。</li>
-<li><strong>Java每实例化一个Exception，都会对当时的栈进行快照，这是一个相对比较重的操作。</strong>如果发生的非常频繁，这个开销可就不能被忽略了。</li>
-</ul>
-<p>所以，对于部分追求极致性能的底层类库，有种方式是尝试创建不进行栈快照的Exception。这本身也存在争议，因为这样做的假设在于，我创建异常时知道未来是否需要堆栈。问题是，实际上可能吗？小范围或许可能，但是在大规模项目中，这么做可能不是个理智的选择。如果需要堆栈，但又没有收集这些信息，在复杂情况下，尤其是类似微服务这种分布式系统，这会大大增加诊断的难度。</p>
-<p>当我们的服务出现反应变慢、吞吐量下降的时候，检查发生最频繁的Exception也是一种思路。关于诊断后台变慢的问题，我会在后面的Java性能基础模块中系统探讨。</p>
-<p>今天，我</p>
-<ol>
-<li>从一个常见的异常处理概念问题，简单总结了Java异常处理的机制。</li>
-<li>并结合代码，分析了一些普遍认可的最佳实践，以及业界最新的一些异常使用共识。</li>
-<li>最后，我分析了异常性能开销，希望对你有所帮助。</li>
-</ol>
-<h1 id="一课一练"><a href="#一课一练" class="headerlink" title="一课一练"></a>一课一练</h1><p>关于今天我们讨论的题目你做到心中有数了吗？可以思考一个问题，对于异常处理编程，不同的编程范式也会影响到异常处理策略，比如，现在非常火热的反应式编程（Reactive Stream），因为其本身是异步、基于事件机制的，所以出现异常情况，决不能简单抛出去；另外，由于代码堆栈不再是同步调用那种垂直的结构，这里的异常处理和日志需要更加小心，我们看到的往往是特定executor的堆栈，而不是业务方法调用关系。对于这种情况，你有什么好的办法吗？</p>
-<p>请你在留言区分享一下你的解决方案，我会选出经过认真思考的留言，送给你一份学习鼓励金，欢迎你与我一起讨论。</p>
-<p>你的朋友是不是也在准备面试呢？你可以“请朋友读”，把今天的题目分享给好友，或许你能帮到他。</p>
+<h1 id="一课一练"><a href="#一课一练" class="headerlink" title="一课一练"></a>一课一练</h1><p>关于今天我们讨论的题目你做到心中有数了吗？留一个道思考题给你，在产品代码中，有没有典型的场景需要使用类似ConcurrentHashMap这样的并发容器呢？</p>
+<p>请你在留言区写写你对这个问题的思考，我会选出经过认真思考的留言，送给你一份学习鼓励金，欢迎你与我一起讨论。<br>你的朋友是不是也在准备面试呢？你可以“请朋友读”，把今天的题目分享给好友，或许你能帮到他。</p>
 
       
     </div>
@@ -628,7 +713,7 @@ e.printStackTrace();
           
             <a href="/tags/极客的专栏/" rel="tag"># 极客的专栏</a>
           
-            <a href="/tags/异常/" rel="tag"># 异常</a>
+            <a href="/tags/Java集合/" rel="tag"># Java集合</a>
           
         </div>
       
@@ -641,8 +726,8 @@ e.printStackTrace();
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/02/Java三种编译方式/" rel="next" title="Java三种编译方式">
-                <i class="fa fa-chevron-left"></i> Java三种编译方式
+              <a href="/2020/03/11/Java核心36讲09/" rel="next" title="09对比Hashtable、HashMap、TreeMap有什么不同？[转]">
+                <i class="fa fa-chevron-left"></i> 09对比Hashtable、HashMap、TreeMap有什么不同？[转]
               </a>
             
           </div>
@@ -650,10 +735,6 @@ e.printStackTrace();
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/03/Java核心36讲03/" rel="prev" title="03谈谈final、finally、 finalize有什么不同？[转]">
-                03谈谈final、finally、 finalize有什么不同？[转] <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

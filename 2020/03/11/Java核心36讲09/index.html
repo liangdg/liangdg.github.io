@@ -97,7 +97,7 @@
 
 
   <meta name="description" content="Map是广义Java集合框架中的另外一部分，HashMap作为框架中使用频率最高的类型之一，它本身以及相关类型自然也是面试考察的热点。今天我要问你的问题是，对比Hashtable、HashMap、TreeMap有什么不同？谈谈你对HashMap的掌握。">
-<meta name="keywords" content="Java核心36讲,阅读笔记,极客的专栏,Java集合">
+<meta name="keywords" content="阅读笔记,Java核心36讲,极客的专栏,Java集合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="09对比Hashtable、HashMap、TreeMap有什么不同？[转]">
 <meta property="og:url" content="https://liangdg.github.io/2020/03/11/Java核心36讲09/index.html">
@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://liangdg.github.io/2020/03/11/Java核心36讲09/Map的简单类图.jpg">
 <meta property="og:image" content="https://liangdg.github.io/2020/03/11/Java核心36讲09/HashMap的内部结构.jpg">
-<meta property="og:updated_time" content="2020-03-11T13:46:42.663Z">
+<meta property="og:updated_time" content="2020-03-12T14:32:18.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="09对比Hashtable、HashMap、TreeMap有什么不同？[转]">
 <meta name="twitter:description" content="Map是广义Java集合框架中的另外一部分，HashMap作为框架中使用频率最高的类型之一，它本身以及相关类型自然也是面试考察的热点。今天我要问你的问题是，对比Hashtable、HashMap、TreeMap有什么不同？谈谈你对HashMap的掌握。">
@@ -411,12 +411,24 @@
                 
               
 
-              <time title="创建时间：2020-03-11 21:12:52 / 修改时间：21:46:42" itemprop="dateCreated datePublished" datetime="2020-03-11T21:12:52+08:00">2020-03-11</time>
+              <time title="创建时间：2020-03-11 21:12:52" itemprop="dateCreated datePublished" datetime="2020-03-11T21:12:52+08:00">2020-03-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-03-12 22:32:18" itemprop="dateModified" datetime="2020-03-12T22:32:18+08:00">2020-03-12</time>
               
             
           </span>
@@ -646,18 +658,19 @@ public class LinkedHashMapSample {
 <li>如果没有特别需求，不要轻易进行更改，因为JDK自身的默认负载因子是非常符合通用场景的需求的。</li>
 <li>如果确实需要调整，建议不要设置超过0.75的数值，因为会显著增加冲突，降低HashMap的性能。</li>
 <li>如果使用太小的负载因子，按照上面的公式，预设容量值也进行调整，否则可能会导致更加频繁的扩容，增加无谓的开销，本身访问性能也会受影响。</li>
-<li><p>我们前面提到了树化改造，对应逻辑主要在putVal和treeifyBin中。</p>
-<p>  final void treeifyBin(Node&lt;K,V&gt;[] tab, int hash) {</p>
-<pre><code>int n, index; Node&lt;K,V&gt; e;
-if (tab == null || (n = tab.length) &lt; MIN_TREEIFY_CAPACITY)
-    resize();
-else if ((e = tab[index = (n - 1) &amp; hash]) != null) {
-    //树化改造逻辑
+</ul>
+<p>我们前面提到了树化改造，对应逻辑主要在putVal和treeifyBin中。</p>
+<pre><code>final void treeifyBin(Node&lt;K,V&gt;[] tab, int hash) {
+     int n, index; Node&lt;K,V&gt; e;
+     if (tab == null || (n = tab.length) &lt; MIN_TREEIFY_CAPACITY)
+         resize();
+     else if ((e = tab[index = (n - 1) &amp; hash]) != null) {
+         //树化改造逻辑
+     }
 }
-</code></pre><p>  }<br>上面是精简过的treeifyBin示意，综合这两个方法，树化改造的逻辑就非常清晰了，可以理解为，当bin的数量大于TREEIFY_THRESHOLD时：</p>
-</li>
-<li><p>如果容量小于MIN_TREEIFY_CAPACITY，只会进行简单的扩容。</p>
-</li>
+</code></pre><p>上面是精简过的treeifyBin示意，综合这两个方法，树化改造的逻辑就非常清晰了，可以理解为，当bin的数量大于TREEIFY_THRESHOLD时：</p>
+<ul>
+<li>如果容量小于MIN_TREEIFY_CAPACITY，只会进行简单的扩容。</li>
 <li>如果容量大于MIN_TREEIFY_CAPACITY ，则会进行树化改造。</li>
 </ul>
 <p>那么，为什么HashMap要树化呢？<br>本质上这是个安全问题。因为在元素放置过程中，如果一个对象哈希冲突，都被放置到同一个桶里，则会形成一个链表，我们知道链表查询是线性的，会严重影响存取的性能。</p>
@@ -693,9 +706,9 @@ else if ((e = tab[index = (n - 1) &amp; hash]) != null) {
       
         <div class="post-tags">
           
-            <a href="/tags/Java核心36讲/" rel="tag"># Java核心36讲</a>
-          
             <a href="/tags/阅读笔记/" rel="tag"># 阅读笔记</a>
+          
+            <a href="/tags/Java核心36讲/" rel="tag"># Java核心36讲</a>
           
             <a href="/tags/极客的专栏/" rel="tag"># 极客的专栏</a>
           
@@ -721,6 +734,10 @@ else if ((e = tab[index = (n - 1) &amp; hash]) != null) {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/12/Java核心36讲10/" rel="prev" title="10如何保证集合是线程安全的? ConcurrentHashMap如何实现高效地线程安全？[转]">
+                10如何保证集合是线程安全的? ConcurrentHashMap如何实现高效地线程安全？[转] <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -791,7 +808,7 @@ else if ((e = tab[index = (n - 1) &amp; hash]) != null) {
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
