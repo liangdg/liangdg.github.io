@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liangdg.github.io/"/>
-  <updated>2020-03-12T15:12:12.179Z</updated>
+  <updated>2020-03-14T00:28:02.739Z</updated>
   <id>https://liangdg.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>11Java提供了哪些IO方式？ NIO如何实现多路复用？[转]</title>
+    <link href="https://liangdg.github.io/2020/03/13/Java%E6%A0%B8%E5%BF%8336%E8%AE%B211/"/>
+    <id>https://liangdg.github.io/2020/03/13/Java核心36讲11/</id>
+    <published>2020-03-12T23:53:36.000Z</published>
+    <updated>2020-03-14T00:28:02.739Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;IO一直是软件开发中的核心部分之一，伴随着海量数据增长和分布式系统的发展，IO扩展能力愈发重要。幸运的是，Java平台IO机制经过不断完善，虽然在某些方面仍有不足，但已经在实践中证明了其构建高扩展性应用的能力。&lt;br&gt;今天我要问你的问题是，&lt;strong&gt;Java提供了哪些IO方式？ NIO如何实现多路复用？&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://liangdg.github.io/categories/Java/"/>
+    
+      <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
+    
+    
+      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+    
+      <category term="极客的专栏" scheme="https://liangdg.github.io/tags/%E6%9E%81%E5%AE%A2%E7%9A%84%E4%B8%93%E6%A0%8F/"/>
+    
+      <category term="IO" scheme="https://liangdg.github.io/tags/IO/"/>
+    
+      <category term="NIO" scheme="https://liangdg.github.io/tags/NIO/"/>
+    
+  </entry>
   
   <entry>
     <title>10如何保证集合是线程安全的? ConcurrentHashMap如何实现高效地线程安全？[转]</title>
@@ -176,9 +206,9 @@
     
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="Java核心36讲笔记" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
+    
+      <category term="Java核心36讲笔记" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
