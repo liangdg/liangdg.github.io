@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liangdg.github.io/"/>
-  <updated>2020-03-14T17:03:22.555Z</updated>
+  <updated>2020-03-14T17:22:09.286Z</updated>
   <id>https://liangdg.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>13谈谈接口和抽象类有什么区别？[转]</title>
+    <link href="https://liangdg.github.io/2020/03/15/Java%E6%A0%B8%E5%BF%8336%E8%AE%B213/"/>
+    <id>https://liangdg.github.io/2020/03/15/Java核心36讲13/</id>
+    <published>2020-03-14T17:04:14.000Z</published>
+    <updated>2020-03-14T17:22:09.286Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Java是非常典型的面向对象语言，曾经有一段时间，程序员整天把面向对象、设计模式挂在嘴边。虽然如今大家对这方面已经不再那么狂热，但是不可否认，掌握面向对象设计原则和技巧，是保证高质量代码的基础之一。&lt;/p&gt;
+&lt;p&gt;面向对象提供的基本机制，对于提高开发、沟通等各方面效率至关重要。考察面向对象也是面试中的常见一环，下面我来聊聊面向对象设计基础。&lt;br&gt;今天我要问你的问题是，&lt;strong&gt;谈谈接口和抽象类有什么区别？&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://liangdg.github.io/categories/Java/"/>
+    
+      <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
+    
+    
+      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+    
+      <category term="极客的专栏" scheme="https://liangdg.github.io/tags/%E6%9E%81%E5%AE%A2%E7%9A%84%E4%B8%93%E6%A0%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>12Java有几种文件拷贝方式？哪一种最高效？[转]</title>
@@ -234,9 +261,9 @@
       <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
     
     
-      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="Java核心36讲笔记" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
       <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
     
@@ -314,9 +341,9 @@
       <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
     
     
-      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="Java核心36讲笔记" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -368,11 +395,11 @@
     
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
-    
       <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
     
       <category term="极客的专栏" scheme="https://liangdg.github.io/tags/%E6%9E%81%E5%AE%A2%E7%9A%84%E4%B8%93%E6%A0%8F/"/>
+    
+      <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
     
   </entry>
   
