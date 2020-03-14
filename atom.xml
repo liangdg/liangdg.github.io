@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liangdg.github.io/"/>
-  <updated>2020-03-14T00:39:51.757Z</updated>
+  <updated>2020-03-14T17:03:22.555Z</updated>
   <id>https://liangdg.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>12Java有几种文件拷贝方式？哪一种最高效？[转]</title>
+    <link href="https://liangdg.github.io/2020/03/14/Java%E6%A0%B8%E5%BF%8336%E8%AE%B212/"/>
+    <id>https://liangdg.github.io/2020/03/14/Java核心36讲12/</id>
+    <published>2020-03-14T13:05:54.000Z</published>
+    <updated>2020-03-14T17:03:22.555Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我在专栏上一讲提到，NIO不止是多路复用，NIO 2也不只是异步IO，今天我们来看看Java IO体系中，其他不可忽略的部分。&lt;br&gt;今天我要问你的问题是，&lt;strong&gt;Java有几种文件拷贝方式？哪一种最高效？&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://liangdg.github.io/categories/Java/"/>
+    
+      <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
+    
+    
+      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+    
+      <category term="极客的专栏" scheme="https://liangdg.github.io/tags/%E6%9E%81%E5%AE%A2%E7%9A%84%E4%B8%93%E6%A0%8F/"/>
+    
+      <category term="IO" scheme="https://liangdg.github.io/tags/IO/"/>
+    
+      <category term="NIO" scheme="https://liangdg.github.io/tags/NIO/"/>
+    
+  </entry>
   
   <entry>
     <title>11Java提供了哪些IO方式？ NIO如何实现多路复用？[转]</title>
@@ -206,9 +236,9 @@
     
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
-    
       <category term="Java核心36讲笔记" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
     
   </entry>
   
@@ -338,11 +368,11 @@
     
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
+      <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
+    
       <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
     
       <category term="极客的专栏" scheme="https://liangdg.github.io/tags/%E6%9E%81%E5%AE%A2%E7%9A%84%E4%B8%93%E6%A0%8F/"/>
-    
-      <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
     
   </entry>
   
