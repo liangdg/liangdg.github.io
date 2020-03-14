@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://liangdg.github.io/2020/03/13/Java核心36讲11/JavaIO简单类图.jpg">
 <meta property="og:image" content="https://liangdg.github.io/2020/03/13/Java核心36讲11/构建并发服务的原理图.jpg">
 <meta property="og:image" content="https://liangdg.github.io/2020/03/13/Java核心36讲11/构建NIO服务器的原理图.jpg">
-<meta property="og:updated_time" content="2020-03-14T00:28:02.739Z">
+<meta property="og:updated_time" content="2020-03-14T00:32:17.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="11Java提供了哪些IO方式？ NIO如何实现多路复用？[转]">
 <meta name="twitter:description" content="IO一直是软件开发中的核心部分之一，伴随着海量数据增长和分布式系统的发展，IO扩展能力愈发重要。幸运的是，Java平台IO机制经过不断完善，虽然在某些方面仍有不足，但已经在实践中证明了其构建高扩展性应用的能力。今天我要问你的问题是，Java提供了哪些IO方式？ NIO如何实现多路复用？">
@@ -429,7 +429,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-14 08:28:02" itemprop="dateModified" datetime="2020-03-14T08:28:02+08:00">2020-03-14</time>
+                <time title="修改时间：2020-03-14 08:32:17" itemprop="dateModified" datetime="2020-03-14T08:32:17+08:00">2020-03-14</time>
               
             
           </span>
@@ -552,14 +552,10 @@
 </ul>
 </li>
 <li>Selector，是NIO实现多路复用的基础，它提供了一种高效的机制，可以检测到注册在Selector上的多个Channel中，是否有Channel处于就绪状态，进而实现了单线程对多Channel的高效管理。<ul>
-<li>Selector同样是基于底层操作系统机制，不同模式、不同版本都存在区别，例如，在最新的代码库里，相关实现如下：</li>
-<li>Linux上依赖于epoll（<a href="http://hg.openjdk.java.net/jdk/jdk/fle/d8327f838b88/src/java.base/linux/classes/sun/nio/ch/EPollSelectorImpl.java）。" target="_blank" rel="noopener">http://hg.openjdk.java.net/jdk/jdk/fle/d8327f838b88/src/java.base/linux/classes/sun/nio/ch/EPollSelectorImpl.java）。</a></li>
-<li>Windows上NIO2（AIO）模式则是依赖于iocp（<a href="http://hg.openjdk.java.net/jdk/jdk/fle/d8327f838b88/src/java.base/windows/classes/sun/nio/ch/Iocp.java）。" target="_blank" rel="noopener">http://hg.openjdk.java.net/jdk/jdk/fle/d8327f838b88/src/java.base/windows/classes/sun/nio/ch/Iocp.java）。</a></li>
+<li>Selector同样是基于底层操作系统机制，不同模式、不同版本都存在区别，例如，在最新的代码库里，相关实现如下：<br>Linux上依赖于epoll（<a href="http://hg.openjdk.java.net/jdk/jdk/fle/d8327f838b88/src/java.base/linux/classes/sun/nio/ch/EPollSelectorImpl.java）。" target="_blank" rel="noopener">http://hg.openjdk.java.net/jdk/jdk/fle/d8327f838b88/src/java.base/linux/classes/sun/nio/ch/EPollSelectorImpl.java）。</a><br>Windows上NIO2（AIO）模式则是依赖于iocp（<a href="http://hg.openjdk.java.net/jdk/jdk/fle/d8327f838b88/src/java.base/windows/classes/sun/nio/ch/Iocp.java）。" target="_blank" rel="noopener">http://hg.openjdk.java.net/jdk/jdk/fle/d8327f838b88/src/java.base/windows/classes/sun/nio/ch/Iocp.java）。</a></li>
 </ul>
 </li>
-<li><p>Chartset，提供Unicode字符串定义，NIO也提供了相应的编解码器等，例如，通过下面的方式进行字符串到ByteBufer的转换：</p>
-<p>  Charset.defaultCharset().encode(“Hello world!”));</p>
-</li>
+<li>Chartset，提供Unicode字符串定义，NIO也提供了相应的编解码器等，例如，通过下面的方式进行字符串到ByteBufer的转换：<br>  Charset.defaultCharset().encode(“Hello world!”));</li>
 </ul>
 <p><strong>2.NIO能解决什么问题？</strong><br>下面我通过一个典型场景，来分析为什么需要NIO，为什么需要多路复用。设想，我们需要实现一个服务器应用，只简单要求能够同时服务多个客户端请求即可。</p>
 <p>使用java.io和java.net中的同步、阻塞式API，可以简单实现。</p>
