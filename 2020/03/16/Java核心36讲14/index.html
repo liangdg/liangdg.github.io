@@ -105,7 +105,7 @@
 <meta property="og:description" content="设计模式是人们为软件开发中相同表征的问题，抽象出的可重复利用的解决方案。在某种程度上，设计模式已经代表了一些特定情况的最佳实践，同时也起到了软件工程师之间沟通的“行话”的作用。理解和掌握典型的设计模式，有利于我们提高沟通、设计的效率和质量。 今天我要问你的问题是，谈谈你知道的设计模式？请手动实现单例模式，Spring等框架中使用了哪些模式？">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://liangdg.github.io/2020/03/16/Java核心36讲14/InputStream类图.jpg">
-<meta property="og:updated_time" content="2020-03-15T22:08:30.643Z">
+<meta property="og:updated_time" content="2020-03-15T22:45:37.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="14谈谈你知道的设计模式？[转]">
 <meta name="twitter:description" content="设计模式是人们为软件开发中相同表征的问题，抽象出的可重复利用的解决方案。在某种程度上，设计模式已经代表了一些特定情况的最佳实践，同时也起到了软件工程师之间沟通的“行话”的作用。理解和掌握典型的设计模式，有利于我们提高沟通、设计的效率和质量。 今天我要问你的问题是，谈谈你知道的设计模式？请手动实现单例模式，Spring等框架中使用了哪些模式？">
@@ -410,7 +410,7 @@
                 
               
 
-              <time title="创建时间：2020-03-16 05:53:19 / 修改时间：06:08:30" itemprop="dateCreated datePublished" datetime="2020-03-16T05:53:19+08:00">2020-03-16</time>
+              <time title="创建时间：2020-03-16 05:53:19 / 修改时间：06:45:37" itemprop="dateCreated datePublished" datetime="2020-03-16T05:53:19+08:00">2020-03-16</time>
             
 
             
@@ -486,7 +486,7 @@
 
       
         <p>设计模式是人们为软件开发中相同表征的问题，抽象出的可重复利用的解决方案。在某种程度上，设计模式已经代表了一些特定情况的最佳实践，同时也起到了软件工程师之间沟通的“行话”的作用。理解和掌握典型的设计模式，有利于我们提高沟通、设计的效率和质量。</p>
-<p>今天我要问你的问题是，<strong>谈谈你知道的设计模式？请手动实现单例模式，Spring等框架中使用了哪些模式？</strong><br><a id="more"></a></p>
+<p>今天我要问你的问题是，<strong>谈谈你知道的设计模式？请手动实现单例模式，Spring等框架中使用了哪些模式？</strong><br><a id="more"></a><br>本文来源:<a href="https://time.geekbang.org/column/intro/82" target="_blank" rel="noopener">极客时间专栏 Java核心技术面试精讲 杨晓峰</a></p>
 <h1 id="典型回答"><a href="#典型回答" class="headerlink" title="典型回答"></a>典型回答</h1><p>大致按照模式的应用目标分类，设计模式可以分为<strong>创建型模式、结构型模式和行为型模式</strong>。</p>
 <ul>
 <li>创建型模式，是对对象创建过程的各种问题和解决方案的总结，包括各种工厂模式（Factory、Abstract Factory）、单例模式（Singleton）、构建器模式（Builder）、原型模式（ProtoType）。</li>
@@ -544,21 +544,22 @@
 <li>这里的volatile能够提供可见性，以及保证getInstance返回的是初始化完全的对象。</li>
 <li>在同步之前进行null检查，以尽量避免进入相对昂贵的同步块。</li>
 <li><p>直接在class级别进行同步，保证线程安全的类方法调用。</p>
-<p>  public class Singleton {</p>
-<pre><code>private satic volatile Singleton singleton = null;
-private Singleton() {
-}
-public satic Singleton getSingleton() {
-    if (singleton == null) { // 尽量避免重复进入同步块
-        synchronized (Singleton.class) { // 同步.class，意味着对同步类方法调用
-            if (singleton == null) {
-                singleton = new Singleton();
+<pre><code>public class Singleton {
+    private satic volatile Singleton singleton = null;
+    private Singleton() {
+    }
+    public satic Singleton getSingleton() {
+        if (singleton == null) { // 尽量避免重复进入同步块
+            synchronized (Singleton.class) { // 同步.class，意味着对同步类方法调用
+                if (singleton == null) {
+                    singleton = new Singleton();
+                }
             }
         }
+        return singleton;
     }
-    return singleton;
 }
-</code></pre><p>  }<br>在这段代码中，争论较多的是volatile修饰静态变量，当Singleton类本身有多个成员变量时，需要保证初始化过程完成后，才能被get到。<br>在现代Java中，内存排序模型（JMM）已经非常完善，通过volatile的write或者read，能保证所谓的happen-before，也就是避免常被提到的指令重排。换句话说，构造对象的store指令能够被保证一定在volatile read之前。</p>
+</code></pre><p>在这段代码中，争论较多的是volatile修饰静态变量，当Singleton类本身有多个成员变量时，需要保证初始化过程完成后，才能被get到。<br>在现代Java中，内存排序模型（JMM）已经非常完善，通过volatile的write或者read，能保证所谓的happen-before，也就是避免常被提到的指令重排。换句话说，构造对象的store指令能够被保证一定在volatile read之前。</p>
 </li>
 </ul>
 <p>当然，也有一些人推荐利用内部类持有静态对象的方式实现，其理论依据是对象初始化过程中隐含的初始化锁（有兴趣的话你可以参考jls-12.4.2 中对LC的说明），这种和前面的双检锁实现都能保证线程安全，不过语法稍显晦涩，未必有特别的优势。</p>
@@ -640,8 +641,8 @@ private Runtime() {}
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/15/Java核心36讲13/" rel="next" title="13谈谈接口和抽象类有什么区别？[转]">
-                <i class="fa fa-chevron-left"></i> 13谈谈接口和抽象类有什么区别？[转]
+              <a href="/2020/03/16/Git使用遇到的问题/" rel="next" title="Git使用遇到的问题">
+                <i class="fa fa-chevron-left"></i> Git使用遇到的问题
               </a>
             
           </div>
@@ -719,7 +720,7 @@ private Runtime() {}
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -742,7 +743,11 @@ private Runtime() {}
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -781,7 +786,11 @@ private Runtime() {}
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

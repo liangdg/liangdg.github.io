@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liangdg.github.io/"/>
-  <updated>2020-03-15T22:08:30.643Z</updated>
+  <updated>2020-03-15T22:45:37.874Z</updated>
   <id>https://liangdg.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://liangdg.github.io/2020/03/16/Java%E6%A0%B8%E5%BF%8336%E8%AE%B214/"/>
     <id>https://liangdg.github.io/2020/03/16/Java核心36讲14/</id>
     <published>2020-03-15T21:53:19.000Z</published>
-    <updated>2020-03-15T22:08:30.643Z</updated>
+    <updated>2020-03-15T22:45:37.874Z</updated>
     
     <summary type="html">
     
@@ -46,11 +46,35 @@
   </entry>
   
   <entry>
+    <title>Git使用遇到的问题</title>
+    <link href="https://liangdg.github.io/2020/03/16/Git%E4%BD%BF%E7%94%A8%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://liangdg.github.io/2020/03/16/Git使用遇到的问题/</id>
+    <published>2020-03-15T21:18:48.000Z</published>
+    <updated>2020-03-15T22:21:43.958Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;在使用git-pull、git-push、git-clone会报类似如下的错误：&quot;&gt;&lt;a href=&quot;#在使用git-pull、git-push、git-clone会报类似如下的错误：&quot; class=&quot;headerlink&quot; title=&quot;在使用git pull、git push、git clone会报类似如下的错误：&quot;&gt;&lt;/a&gt;在使用git pull、git push、git clone会报类似如下的错误：&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo git clone https://github.com/pcduino/a20-kernel&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fatal: HTTP request failed&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="版本控制工具" scheme="https://liangdg.github.io/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="Git" scheme="https://liangdg.github.io/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7/Git/"/>
+    
+    
+      <category term="Git" scheme="https://liangdg.github.io/tags/Git/"/>
+    
+      <category term="问题记录" scheme="https://liangdg.github.io/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>13谈谈接口和抽象类有什么区别？[转]</title>
     <link href="https://liangdg.github.io/2020/03/15/Java%E6%A0%B8%E5%BF%8336%E8%AE%B213/"/>
     <id>https://liangdg.github.io/2020/03/15/Java核心36讲13/</id>
     <published>2020-03-14T17:04:14.000Z</published>
-    <updated>2020-03-14T17:53:40.852Z</updated>
+    <updated>2020-03-15T22:45:37.842Z</updated>
     
     <summary type="html">
     
@@ -77,7 +101,7 @@
     <link href="https://liangdg.github.io/2020/03/14/Java%E6%A0%B8%E5%BF%8336%E8%AE%B212/"/>
     <id>https://liangdg.github.io/2020/03/14/Java核心36讲12/</id>
     <published>2020-03-14T13:05:54.000Z</published>
-    <updated>2020-03-14T17:03:22.555Z</updated>
+    <updated>2020-03-15T22:45:37.891Z</updated>
     
     <summary type="html">
     
@@ -107,7 +131,7 @@
     <link href="https://liangdg.github.io/2020/03/13/Java%E6%A0%B8%E5%BF%8336%E8%AE%B211/"/>
     <id>https://liangdg.github.io/2020/03/13/Java核心36讲11/</id>
     <published>2020-03-12T23:53:36.000Z</published>
-    <updated>2020-03-14T00:39:51.757Z</updated>
+    <updated>2020-03-15T22:45:37.788Z</updated>
     
     <summary type="html">
     
@@ -137,7 +161,7 @@
     <link href="https://liangdg.github.io/2020/03/12/Java%E6%A0%B8%E5%BF%8336%E8%AE%B210/"/>
     <id>https://liangdg.github.io/2020/03/12/Java核心36讲10/</id>
     <published>2020-03-12T14:31:31.000Z</published>
-    <updated>2020-03-12T15:12:12.179Z</updated>
+    <updated>2020-03-15T22:45:37.802Z</updated>
     
     <summary type="html">
     
@@ -166,7 +190,7 @@
     <link href="https://liangdg.github.io/2020/03/11/Java%E6%A0%B8%E5%BF%8336%E8%AE%B209/"/>
     <id>https://liangdg.github.io/2020/03/11/Java核心36讲09/</id>
     <published>2020-03-11T13:12:52.000Z</published>
-    <updated>2020-03-12T14:32:18.386Z</updated>
+    <updated>2020-03-15T22:45:37.825Z</updated>
     
     <summary type="html">
     
@@ -194,7 +218,7 @@
     <link href="https://liangdg.github.io/2020/03/10/Java%E6%A0%B8%E5%BF%8336%E8%AE%B208/"/>
     <id>https://liangdg.github.io/2020/03/10/Java核心36讲08/</id>
     <published>2020-03-10T12:21:29.000Z</published>
-    <updated>2020-03-10T13:12:20.324Z</updated>
+    <updated>2020-03-15T22:45:37.857Z</updated>
     
     <summary type="html">
     
@@ -223,7 +247,7 @@
     <link href="https://liangdg.github.io/2020/03/09/Java%E6%A0%B8%E5%BF%8336%E8%AE%B207/"/>
     <id>https://liangdg.github.io/2020/03/09/Java核心36讲07/</id>
     <published>2020-03-09T14:05:41.000Z</published>
-    <updated>2020-03-09T14:43:23.568Z</updated>
+    <updated>2020-03-15T22:45:37.810Z</updated>
     
     <summary type="html">
     
@@ -249,7 +273,7 @@
     <link href="https://liangdg.github.io/2020/03/08/Java%E6%A0%B8%E5%BF%8336%E8%AE%B206/"/>
     <id>https://liangdg.github.io/2020/03/08/Java核心36讲06/</id>
     <published>2020-03-07T22:11:11.000Z</published>
-    <updated>2020-03-07T22:53:27.175Z</updated>
+    <updated>2020-03-15T22:45:37.882Z</updated>
     
     <summary type="html">
     
@@ -303,7 +327,7 @@
     <link href="https://liangdg.github.io/2020/03/06/Java%E6%A0%B8%E5%BF%8336%E8%AE%B205/"/>
     <id>https://liangdg.github.io/2020/03/06/Java核心36讲05/</id>
     <published>2020-03-05T19:21:17.000Z</published>
-    <updated>2020-03-06T19:40:33.198Z</updated>
+    <updated>2020-03-15T22:45:37.833Z</updated>
     
     <summary type="html">
     
@@ -329,7 +353,7 @@
     <link href="https://liangdg.github.io/2020/03/05/Java%E6%A0%B8%E5%BF%8336%E8%AE%B204/"/>
     <id>https://liangdg.github.io/2020/03/05/Java核心36讲04/</id>
     <published>2020-03-05T08:59:40.000Z</published>
-    <updated>2020-03-07T23:02:56.620Z</updated>
+    <updated>2020-03-15T22:45:37.865Z</updated>
     
     <summary type="html">
     
@@ -381,7 +405,7 @@
     <link href="https://liangdg.github.io/2020/03/03/Java%E6%A0%B8%E5%BF%8336%E8%AE%B203/"/>
     <id>https://liangdg.github.io/2020/03/03/Java核心36讲03/</id>
     <published>2020-03-03T02:05:03.000Z</published>
-    <updated>2020-03-07T22:52:20.112Z</updated>
+    <updated>2020-03-15T22:45:37.849Z</updated>
     
     <summary type="html">
     
@@ -407,7 +431,7 @@
     <link href="https://liangdg.github.io/2020/03/02/Java%E6%A0%B8%E5%BF%8336%E8%AE%B202/"/>
     <id>https://liangdg.github.io/2020/03/02/Java核心36讲02/</id>
     <published>2020-03-02T09:32:46.000Z</published>
-    <updated>2020-03-07T23:04:19.374Z</updated>
+    <updated>2020-03-15T22:45:37.818Z</updated>
     
     <summary type="html">
     
@@ -424,11 +448,11 @@
     
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
+      <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
+    
       <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
     
       <category term="极客的专栏" scheme="https://liangdg.github.io/tags/%E6%9E%81%E5%AE%A2%E7%9A%84%E4%B8%93%E6%A0%8F/"/>
-    
-      <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
     
   </entry>
   
@@ -459,7 +483,7 @@
     <link href="https://liangdg.github.io/2020/03/01/Java%E6%A0%B8%E5%BF%8336%E8%AE%B201/"/>
     <id>https://liangdg.github.io/2020/03/01/Java核心36讲01/</id>
     <published>2020-03-01T07:59:01.000Z</published>
-    <updated>2020-03-05T11:58:54.640Z</updated>
+    <updated>2020-03-15T22:44:01.843Z</updated>
     
     <summary type="html">
     
