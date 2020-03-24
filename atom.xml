@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liangdg.github.io/"/>
-  <updated>2020-03-15T22:45:37.874Z</updated>
+  <updated>2020-03-24T04:05:58.575Z</updated>
   <id>https://liangdg.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>15synchronized和ReentrantLock有什么区别呢？[转]</title>
+    <link href="https://liangdg.github.io/2020/03/18/Java%E6%A0%B8%E5%BF%8336%E8%AE%B215/"/>
+    <id>https://liangdg.github.io/2020/03/18/Java核心36讲15/</id>
+    <published>2020-03-18T15:29:41.000Z</published>
+    <updated>2020-03-24T04:05:58.575Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从今天开始，我们将进入Java并发学习阶段。软件并发已经成为现代软件开发的基础能力，而Java精心设计的高效并发机制，正是构建大规模应用的基础之一，所以考察并发基本功也成为各个公司面试Java工程师的必选项。&lt;br&gt;今天我要问你的问题是， &lt;strong&gt;synchronized和ReentrantLock有什么区别？有人说synchronized最慢，这话靠谱吗？&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://liangdg.github.io/categories/Java/"/>
+    
+      <category term="Java并发专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%B9%B6%E5%8F%91%E4%B8%93%E9%A2%98/"/>
+    
+    
+      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
+    
+      <category term="极客的专栏" scheme="https://liangdg.github.io/tags/%E6%9E%81%E5%AE%A2%E7%9A%84%E4%B8%93%E6%A0%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>14谈谈你知道的设计模式？[转]</title>
@@ -314,9 +340,9 @@
       <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
     
     
-      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="Java核心36讲笔记" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
       <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
     
@@ -394,9 +420,9 @@
       <category term="Java基础专题" scheme="https://liangdg.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80%E4%B8%93%E9%A2%98/"/>
     
     
-      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="Java核心36讲笔记" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -448,11 +474,11 @@
     
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
-    
       <category term="Java核心36讲" scheme="https://liangdg.github.io/tags/Java%E6%A0%B8%E5%BF%8336%E8%AE%B2/"/>
     
       <category term="极客的专栏" scheme="https://liangdg.github.io/tags/%E6%9E%81%E5%AE%A2%E7%9A%84%E4%B8%93%E6%A0%8F/"/>
+    
+      <category term="异常" scheme="https://liangdg.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
     
   </entry>
   
@@ -524,20 +550,6 @@
     
     
       <category term="阅读笔记" scheme="https://liangdg.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>helloworld</title>
-    <link href="https://liangdg.github.io/2019/05/23/helloworld/"/>
-    <id>https://liangdg.github.io/2019/05/23/helloworld/</id>
-    <published>2019-05-23T09:22:52.000Z</published>
-    <updated>2020-03-01T08:10:27.980Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
     
   </entry>
   
