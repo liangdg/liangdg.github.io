@@ -96,18 +96,21 @@
 
 
 
-  <meta name="description" content="Java是非常典型的面向对象语言，曾经有一段时间，程序员整天把面向对象、设计模式挂在嘴边。虽然如今大家对这方面已经不再那么狂热，但是不可否认，掌握面向对象设计原则和技巧，是保证高质量代码的基础之一。 面向对象提供的基本机制，对于提高开发、沟通等各方面效率至关重要。考察面向对象也是面试中的常见一环，下面我来聊聊面向对象设计基础。今天我要问你的问题是，谈谈接口和抽象类有什么区别？">
+  <meta name="description" content="我在上一讲对比和分析了synchronized和ReentrantLock，算是专栏进入并发编程阶段的热身，相信你已经对线程安全，以及如何使用基本的同步机制有了基础，今天我们将深入了解synchronize底层机制，分析其他锁实现和应用场景。今天我要问你的问题是 ，synchronized底层如何实现？什么是锁的升级、降级？">
 <meta name="keywords" content="阅读笔记,Java核心36讲,极客的专栏">
 <meta property="og:type" content="article">
-<meta property="og:title" content="13谈谈接口和抽象类有什么区别？[转]">
-<meta property="og:url" content="https://liangdg.github.io/2020/03/15/Java核心36讲13/index.html">
+<meta property="og:title" content="16synchronized底层如何实现？什么是锁的升级、降级？[转]">
+<meta property="og:url" content="https://liangdg.github.io/2020/03/24/Java核心36讲16/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="Java是非常典型的面向对象语言，曾经有一段时间，程序员整天把面向对象、设计模式挂在嘴边。虽然如今大家对这方面已经不再那么狂热，但是不可否认，掌握面向对象设计原则和技巧，是保证高质量代码的基础之一。 面向对象提供的基本机制，对于提高开发、沟通等各方面效率至关重要。考察面向对象也是面试中的常见一环，下面我来聊聊面向对象设计基础。今天我要问你的问题是，谈谈接口和抽象类有什么区别？">
+<meta property="og:description" content="我在上一讲对比和分析了synchronized和ReentrantLock，算是专栏进入并发编程阶段的热身，相信你已经对线程安全，以及如何使用基本的同步机制有了基础，今天我们将深入了解synchronize底层机制，分析其他锁实现和应用场景。今天我要问你的问题是 ，synchronized底层如何实现？什么是锁的升级、降级？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-15T22:45:37.842Z">
+<meta property="og:image" content="https://liangdg.github.io/2020/03/24/Java核心36讲16/对象头中Mark%20Word的结构.jpg">
+<meta property="og:image" content="https://liangdg.github.io/2020/03/24/Java核心36讲16/其他锁类型.jpg">
+<meta property="og:updated_time" content="2020-03-29T05:38:57.607Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="13谈谈接口和抽象类有什么区别？[转]">
-<meta name="twitter:description" content="Java是非常典型的面向对象语言，曾经有一段时间，程序员整天把面向对象、设计模式挂在嘴边。虽然如今大家对这方面已经不再那么狂热，但是不可否认，掌握面向对象设计原则和技巧，是保证高质量代码的基础之一。 面向对象提供的基本机制，对于提高开发、沟通等各方面效率至关重要。考察面向对象也是面试中的常见一环，下面我来聊聊面向对象设计基础。今天我要问你的问题是，谈谈接口和抽象类有什么区别？">
+<meta name="twitter:title" content="16synchronized底层如何实现？什么是锁的升级、降级？[转]">
+<meta name="twitter:description" content="我在上一讲对比和分析了synchronized和ReentrantLock，算是专栏进入并发编程阶段的热身，相信你已经对线程安全，以及如何使用基本的同步机制有了基础，今天我们将深入了解synchronize底层机制，分析其他锁实现和应用场景。今天我要问你的问题是 ，synchronized底层如何实现？什么是锁的升级、降级？">
+<meta name="twitter:image" content="https://liangdg.github.io/2020/03/24/Java核心36讲16/对象头中Mark%20Word的结构.jpg">
 
 
 
@@ -117,7 +120,7 @@
 
   
   
-  <link rel="canonical" href="https://liangdg.github.io/2020/03/15/Java核心36讲13/">
+  <link rel="canonical" href="https://liangdg.github.io/2020/03/24/Java核心36讲16/">
 
 
 
@@ -127,7 +130,7 @@
   };
 </script>
 
-  <title>13谈谈接口和抽象类有什么区别？[转] | 我的博客</title>
+  <title>16synchronized底层如何实现？什么是锁的升级、降级？[转] | 我的博客</title>
   
 
 
@@ -365,7 +368,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://liangdg.github.io/2020/03/15/Java核心36讲13/">
+    <link itemprop="mainEntityOfPage" href="https://liangdg.github.io/2020/03/24/Java核心36讲16/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="梁端刚">
@@ -382,7 +385,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">13谈谈接口和抽象类有什么区别？[转]
+          <h1 class="post-title" itemprop="name headline">16synchronized底层如何实现？什么是锁的升级、降级？[转]
 
               
             
@@ -408,7 +411,7 @@
                 
               
 
-              <time title="创建时间：2020-03-15 01:04:14" itemprop="dateCreated datePublished" datetime="2020-03-15T01:04:14+08:00">2020-03-15</time>
+              <time title="创建时间：2020-03-24 12:07:11" itemprop="dateCreated datePublished" datetime="2020-03-24T12:07:11+08:00">2020-03-24</time>
             
 
             
@@ -425,7 +428,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-16 06:45:37" itemprop="dateModified" datetime="2020-03-16T06:45:37+08:00">2020-03-16</time>
+                <time title="修改时间：2020-03-29 13:38:57" itemprop="dateModified" datetime="2020-03-29T13:38:57+08:00">2020-03-29</time>
               
             
           </span>
@@ -449,7 +452,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/Java基础专题/" itemprop="url" rel="index"><span itemprop="name">Java基础专题</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/Java并发专题/" itemprop="url" rel="index"><span itemprop="name">Java并发专题</span></a></span>
 
                 
                 
@@ -464,7 +467,7 @@
 
           
           
-            <span id="/2020/03/15/Java核心36讲13/" class="leancloud_visitors" data-flag-title="13谈谈接口和抽象类有什么区别？[转]">
+            <span id="/2020/03/24/Java核心36讲16/" class="leancloud_visitors" data-flag-title="16synchronized底层如何实现？什么是锁的升级、降级？[转]">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -495,129 +498,183 @@
       
 
       
-        <p>Java是非常典型的面向对象语言，曾经有一段时间，程序员整天把面向对象、设计模式挂在嘴边。虽然如今大家对这方面已经不再那么狂热，但是不可否认，掌握面向对象设计原则和技巧，是保证高质量代码的基础之一。</p>
-<p>面向对象提供的基本机制，对于提高开发、沟通等各方面效率至关重要。考察面向对象也是面试中的常见一环，下面我来聊聊面向对象设计基础。<br>今天我要问你的问题是，<strong>谈谈接口和抽象类有什么区别？</strong><br><a id="more"></a><br>本文来源:<a href="https://time.geekbang.org/column/intro/82" target="_blank" rel="noopener">极客时间专栏 Java核心技术面试精讲 杨晓峰</a></p>
-<h1 id="典型回答"><a href="#典型回答" class="headerlink" title="典型回答"></a>典型回答</h1><p>接口和抽象类是Java面向对象设计的两个基础机制。</p>
+        <p>我在上一讲对比和分析了synchronized和ReentrantLock，算是专栏进入并发编程阶段的热身，相信你已经对线程安全，以及如何使用基本的同步机制有了基础，今天我们将深入了解synchronize底层机制，分析其他锁实现和应用场景。<br>今天我要问你的问题是 ，<strong>synchronized底层如何实现？什么是锁的升级、降级？</strong><br><a id="more"></a></p>
+<h1 id="典型回答"><a href="#典型回答" class="headerlink" title="典型回答"></a>典型回答</h1><p>在回答这个问题前，先简单复习一下上一讲的知识点。</p>
 <ul>
-<li>接口是对行为的抽象，它是抽象方法的集合，利用接口可以达到API定义和实现分离的目的。</li>
-<li>接口，不能实例化；不能包含任何非常量成员，任何feild都是隐含着public static final的意义；</li>
-<li>同时，没有非静态方法实现，也就是说要么是抽象方法，要么是静态方法。</li>
-<li>Java标准类库中，定义了非常多的接口，比如java.util.List。</li>
-<li>抽象类是不能实例化的类，用abstract关键字修饰class，其目的主要是代码重用。</li>
-<li>除了不能实例化，形式上和一般的Java类并没有太大区别，可以有一个或者多个抽象方法，也可<br>以没有抽象方法。</li>
-<li>抽象类大多用于抽取相关Java类的共用方法实现或者是共同成员变量，然后通过继承的方式达到代码复用的目的。</li>
-<li>Java标准库中，比如collection框架，很多通用部分就被抽取成为抽象类，例如java.util.AbstractList。</li>
-<li><p>Java类实现interface使用implements关键词，继承abstract class则是使用extends关键词，我们可以参考Java标准库中的ArrayList。</p>
-<pre><code>public class ArrayLis&lt;E&gt; extends AbsractLis&lt;E&gt;
- implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable
-{
-//...
-}
+<li>synchronized代码块是由一对儿monitorenter/monitorexit指令实现的，</li>
+<li>Monitor对象是同步的基本实现单元。 </li>
+<li>在Java 6之前，Monitor的实现完全是依靠操作系统内部的互斥锁，因为需要进行用户态到内核态的切换，所以同步操作是一个无差别的重量级操作。</li>
+<li>现代的（Oracle）JDK中，JVM对此进行了大刀阔斧地改进，提供了三种不同的Monitor实现，也就是常说的三种不同的锁：偏斜锁（Biased Locking）、轻量级锁和重量级锁，大大改进了其性能。</li>
+</ul>
+<p><strong>所谓锁的升级、降级，就是JVM优化synchronized运行的机制，当JVM检测到不同的竞争状况时，会自动切换到适合的锁实现，这种切换就是锁的升级、降级。</strong></p>
+<ul>
+<li>当没有竞争出现时，默认会使用<strong>偏斜锁</strong>。<ul>
+<li><strong>JVM会利用CAS操作（compare and swap），在对象头上的Mark Word部分设置线程ID，以表示这个对象偏向于当前线程，所以并不涉及真正的互斥锁。</strong></li>
+<li>这样做的假设是基于在很多应用场景中，大部分对象生命周期中最多会被一个线程锁定，使用偏斜锁可以降低无竞争开销。</li>
+</ul>
+</li>
+<li>如果有另外的线程试图锁定某个已经被偏斜过的对象，JVM就需要撤销（revoke）偏斜锁，并切换到轻量级锁实现。<ul>
+<li><strong>轻量级锁依赖CAS操作Mark Word来试图获取锁，如果重试成功，就使用普通的轻量级锁；否则，进一步升级为重量级锁。</strong></li>
+</ul>
+</li>
+<li>我注意到有的观点认为Java不会进行锁降级。实际上据我所知，锁降级确实是会发生的，当JVM进入安全点（SafePoint）的时候，会检查是否有闲置的Monitor，然后试图进行降级。</li>
+</ul>
+<h1 id="考点分析"><a href="#考点分析" class="headerlink" title="考点分析"></a>考点分析</h1><p>今天的问题主要是考察你对Java内置锁实现的掌握，也是并发的经典题目。我在前面给出的典型回答，涵盖了一些基本概念。如果基础不牢，有些概念理解起来就比较晦涩，我建议还是尽量理解和掌握，即使有不懂的也不用担心，在后续学习中还会逐步加深认识。</p>
+<p>我个人认为，能够基础性地理解这些概念和机制，其实对于大多数并发编程已经足够了，毕竟大部分工程师未必会进行更底层、更基础的研发，很多时候解决的是知道与否，真正的提高还要靠实践踩坑。</p>
+<p>后面我会进一步分析：</p>
+<ul>
+<li>从源码层面，稍微展开一些synchronized的底层实现，并补充一些上面答案中欠缺的细节，有同学反馈这部分容易被问到。如果你对Java底层源码有兴趣，但还没有找到入手点，这里可以成为一个切入点。</li>
+<li>理解并发包中java.util.concurrent.lock提供的其他锁实现，毕竟Java可不是只有ReentrantLock一种显式的锁类型，我会结合代码分析其使用。</li>
+</ul>
+<h1 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h1><p>我在上一讲提到过synchronized是JVM内部的Intrinsic Lock，所以偏斜锁、轻量级锁、重量级锁的代码实现，并不在核心类库部分，而是在JVM的代码中。</p>
+<p>Java代码运行可能是解释模式也可能是编译模式（如果不记得，请复习专栏第1讲），所以对应的同步逻辑实现，也会分散在不同模块下，比如，解释器版本就是：</p>
+<pre><code>src/hotspot/share/interpreter/interpreterRuntime.cpp
+</code></pre><p>为了简化便于理解，我这里会专注于通用的基类实现：</p>
+<pre><code>src/hotspot/share/runtime/
+</code></pre><p>另外请注意，链接指向的是最新JDK代码库，所以可能某些实现与历史版本有所不同。</p>
+<p>首先，<strong>synchronized的行为是JVM runtime的一部分</strong>，所以我们需要先找到Runtime相关的功能实现。通过在代码中查询类似“monitor_enter”或“Monitor Enter”，很直观的就可以定位到：</p>
+<pre><code>sharedRuntime.cpp/hpp，它是解释器和编译器运行时的基类。
+synchronizer.cpp/hpp，JVM同步相关的各种基础逻辑。
+</code></pre><p>在sharedRuntime.cpp中，下面代码体现了synchronized的主要逻辑。<br>    Handle h_obj(THREAD, obj);<br>    if (UseBiasedLocking) {<br>        // Retry fas entry if bias is revoked to avoid unnecessary infation<br>        ObjectSynchronizer::fast_enter(h_obj, lock, true, CHECK);<br>    } else {<br>        ObjectSynchronizer::slow_enter(h_obj, lock, CHECK);<br>    }<br>其实现可以简单进行分解：</p>
+<ul>
+<li><p>UseBiasedLocking是一个检查，因为，在JVM启动时，我们可以指定是否开启偏斜锁。</p>
+<ul>
+<li>偏斜锁并不适合所有应用场景，撤销操作（revoke）是比较重的行为，</li>
+<li>只有当存在较多不会真正竞争的synchronized块儿时，才能体现出明显改善。</li>
+<li>实践中对于偏斜锁的一直是有争议的，有人甚至认为，当你需要大量使用并发类库时，往往意味着你不需要偏斜锁。</li>
+<li>从具体选择来看，我还是建议需要在实践中进行测试，根据结果再决定是否使用。</li>
+<li><p>还有一方面是，偏斜锁会延缓JIT 预热的进程，所以很多性能测试中会显式地关闭偏斜锁，命令如下：</p>
+<pre><code>-XX:-UseBiasedLocking
 </code></pre></li>
 </ul>
-<h1 id="考点分析"><a href="#考点分析" class="headerlink" title="考点分析"></a>考点分析</h1><p>这是个非常高频的Java面向对象基础问题，看起来非常简单的问题，如果面试官稍微深入一些，你会发现很多有意思的地方，可以从不同角度全面地考察你对基本机制的理解和掌握。比如:</p>
-<ul>
-<li>对于Java的基本元素的语法是否理解准确。能否定义出语法基本正确的接口、抽象类或者相关继承实现，</li>
-<li>涉及重载（Overload）、重写（Override）更是有各种不同的题目。</li>
-<li>在软件设计开发中妥善地使用接口和抽象类。</li>
-</ul>
-<p>你至少知道典型应用场景，掌握基础类库重要接口的使用；掌握设计方法，能够在review代码的时候看出明显的不利于未来维护的设计。</p>
-<p>掌握Java语言特性演进。现在非常多的框架已经是基于Java 8，并逐渐支持更新版本，掌握相关语法，理解设计目的是很有必要的。</p>
-<h1 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h1><p>我会从接口、抽象类的一些实践，以及语言变化方面去阐述一些扩展知识点。</p>
-<p>Java相比于其他面向对象语言，如C++，设计上有一些基本区别，比如Java不支持多继承。这种限制，在规范了代码实现的同时，也产生了一些局限性，影响着程序设计结构。Java类可以实现多个接口，因为接口是抽象方法的集合，所以这是声明性的，但不能通过扩展多个抽象类来重用逻辑。</p>
-<p>在一些情况下存在特定场景，需要抽象出与具体实现、实例化无关的通用逻辑，或者纯调用关系的逻辑，但是使用传统的抽象类会陷入到单继承的窘境。以往常见的做法是，实现由静态方法组成的工具类（Utils），比如java.util.Collections。</p>
-<p>设想，为接口添加任何抽象方法，相应的所有实现了这个接口的类，也必须实现新增方法，否则会出现编译错误。<br>对于抽象类，如果我们添加非抽象方法，其子类只会享受到能力扩展，而不用担心编译出问题。</p>
-<p><strong>接口的职责也不仅仅限于抽象方法的集合，其实有各种不同的实践</strong>。<br>有一类没有任何方法的接口，通常叫作Marker Interface，顾名思义，它的目的就是为了声明某些东西，比如我<br>们熟知的Cloneable、Serializable等。这种用法，也存在于业界其他的Java产品代码中。<br>从表面看，这似乎和Annotation异曲同工，也确实如此，它的好处是简单直接。对于Annotation，因为可以指定参数和值，在表达能力上要更强大一些，所以更多人选择使用Annotation。</p>
-<p>Java 8增加了函数式编程的支持，所以又增加了一类定义，即所谓functional interface，简单说就是只有一个抽象方法的接口，通常建议使用@FunctionalInterface Annotation来标记。<br>Lambda表达式本身可以看作是一类functional interface，某种程度上这和面向对象可以算是两码事。我们熟知的Runnable、Callable之类，都是functional interface，这里不再多介绍了，有兴趣你可以参考：<a href="https://www.oreilly.com/learning/java-8-functional-interfaces" target="_blank" rel="noopener">https://www.oreilly.com/learning/java-8-functional-interfaces</a> 。</p>
-<p>还有一点可能让人感到意外，严格说，Java 8以后，接口也是可以有方法实现的！<br>从Java 8开始，interface增加了对default method的支持。Java 9以后，甚至可以定义private default method。Default method提供了一种二进制兼容的扩展已有接口的办法。比如，我们熟知的java.util.Collection，它是collection体系的root interface，在Java 8中添加了一系列default method，主要是增加Lambda、Stream相关的功能。<br>我在专栏前面提到的类似Collections之类的工具类，很多方法都适合作为default method实现在基础接口里面。<br>你可以参考下面代码片段：</p>
-<pre><code>public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; {
-    /**
-    * Returns a sequential Stream with this collection as its source 
-    * ...
-    **/
-    default Stream&lt;E&gt; sream() {
-        return StreamSupport.sream(spliterator(), false);
-    }
-}
-</code></pre><p><strong>面向对象设计</strong></p>
-<p>谈到面向对象，很多人就会想起设计模式，那些是非常经典的问题和设计方法的总结。我今天来夯实一下基础，先来聊聊面向对象设计的基本方面。</p>
-<p>我们一定要清楚<strong>面向对象的基本要素：封装、继承、多态</strong>。</p>
-<ul>
-<li>封装的目的是隐藏事务内部的实现细节，以便提高安全性和简化编程。封装提供了合理的边界，避免外部调用者接触到内部的细节。我们在日常开发中，因为无意间暴露了细节导致的难缠bug太多了，比如在多线程环境暴露内部状态，导致的并发修改问题。从另外一个角度看，封装这种隐藏，也提供了简化的界面，避免太多无意义的细节浪费调用者的精力。</li>
-<li>继承是代码复用的基础机制，类似于我们对于马、白马、黑马的归纳总结。但要注意，继承可以看作是非常紧耦合的一种关系，父类代码修改，子类行为也会变动。在实践中，过度滥用继承，可能会起到反效果。</li>
-<li><p>多态，你可能立即会想到重写（override）和重载（overload）、向上转型。简单说，重写是父子类中相同名字和参数的方法，不同的实现；重载则是相同名字的方法，但是不同的参数，本质上这些方法签名是不一样的，为了更好说明，请参考下面的样例代码：</p>
-<pre><code>public int doSomething() {
- return 0;
-}
-// 输入参数不同，意味着方法签名不同，重载的体现
-public int doSomething(Lis&lt;String&gt; srs) {
- return 0;
-}
-// return类型不一样，编译不能通过
-public short doSomething() {
- return 0;
-}
-</code></pre><p>这里你可以思考一个小问题，方法名称和参数一致，但是返回值不同，这种情况在Java代码中算是有效的重载吗？ 答案是不是的，编译都会出错的。</p>
 </li>
+<li>fast_enter是我们熟悉的完整锁获取路径，slow_enter则是绕过偏斜锁，直接进入轻量级锁获取逻辑。</li>
 </ul>
-<p>进行面向对象编程，掌握基本的设计原则是必须的，我今天介绍最通用的部分，也就是所谓的<strong>S.O.L.I.D原则</strong>。</p>
-<ul>
-<li>单一职责（Single Responsibility），类或者对象最好是只有单一职责，在程序设计中如果发现某个类承担着多种义务，可以考虑进行拆分。</li>
-<li>开关原则（Open-Close, Open for extension, close for modifcation），设计要对扩展开放，对修改关闭。换句话说，程序设计应保证平滑的扩展性，尽量避免因为新增同类功能而修改已有实现，这样可以少产出些回归（regression）问题。</li>
-<li>里氏替换（Liskov Substitution），这是面向对象的基本要素之一，进行继承关系抽象时，凡是可以用父类或者基类的地方，都可以用子类替换。</li>
-<li>接口分离（Interface Segregation），我们在进行类和接口设计时，如果在一个接口里定义了太多方法，其子类很可能面临两难，就是只有部分方法对它是有意义的，这就破坏了程序的内聚性。<br>对于这种情况，可以通过拆分成功能单一的多个接口，将行为进行解耦。在未来维护中，如果某个接口设计有变，不会对使用其他接口的子类构成影响。</li>
-<li>依赖反转（Dependency Inversion），实体应该依赖于抽象而不是实现。也就是说高层次模块，不应该依赖于低层次模块，而是应该基于抽象。实践这一原则是保证产品代码之间适当耦合度的法宝。</li>
-</ul>
-<p><strong>OOP原则实践中的取舍</strong></p>
-<p>值得注意的是，现代语言的发展，很多时候并不是完全遵守前面的原则的，比如，Java 10中引入了本地方法类型推断和var类型。按照，里氏替换原则，我们通常这样定义变量：</p>
-<pre><code>Lis&lt;String&gt; list = new ArrayList&lt;&gt;();
-</code></pre><p>如果使用var类型，可以简化为</p>
-<pre><code>var list = new ArrayList&lt;String&gt;();
-</code></pre><p>但是，list实际会被推断为“ArrayList &lt; String &gt;”</p>
-<pre><code>ArrayLis&lt;String&gt; list = new ArrayList&lt;String&gt;();
-</code></pre><p>理论上，这种语法上的便利，其实是增强了程序对实现的依赖，但是微小的类型泄漏却带来了书写的变量和代码可读性的提高，所以，实践中我们还是要按照得失利弊进行选择，而不是一味得遵循原则。</p>
-<p><strong>OOP原则在面试题目中的分析</strong></p>
-<p>我在以往面试中发现，即使是有多年编程经验的工程师，也还没有真正掌握面向对象设计的基本的原则，如开关原则（Open-Close）。看看下面这段代码，改编自朋友圈盛传的某伟大公司产品代码，你觉得可以利用面向对象设计原则如何改进？</p>
-<pre><code>public class VIPCenter {
-    void serviceVIP(T extend User user&gt;) {
-        if (user insanceof SlumDogVIP) {
-            // 穷X VIP，活动抢的那种
-            // do somthing
-        } else if(user insanceof RealVIP) {
-            // do somthing
+<p>那么<strong>fast_enter是如何实现的呢？</strong>同样是通过在代码库搜索，我们可以定位到synchronizer.cpp。 类似fast_enter这种实现，解释器或者动态编译器，都是拷贝这段基础逻辑，所以如果我们修改这部分逻辑，要保证一致性。这部分代码是非常敏感的，微小的问题都可能导致死锁或者正确性问题。</p>
+<pre><code>void ObjectSynchronizer::fast_enter(Handle obj, BasicLock* lock,
+bool attempt_rebias, TRAPS) {
+    if (UseBiasedLocking) {
+        if (!SafepointSynchronize::is_at_safepoint()) {
+            BiasedLocking::Condition cond = BiasedLocking::revoke_and_rebias(obj,     attempt_rebias, THREAD);
+            if (cond == BiasedLocking::BIAS_REVOKED_AND_REBIASED) {
+                return;
+            }
+        } else {
+            assert(!attempt_rebias, &quot;can not rebias toward VM thread&quot;);
+            BiasedLocking::revoke_at_safepoint(obj);
+        }
+        assert(!obj-&gt;mark()-&gt;has_bias_pattern(), &quot;biases should be revoked by now&quot;);
     }
-    // ...
+    slow_enter(obj, lock, THREAD);
 }
-</code></pre><p>这段代码的一个问题是，业务逻辑集中在一起，当出现新的用户类型时，比如，大数据发现了我们是肥羊，需要去收获一下， 这就需要直接去修改服务方法代码实现，这可能会意外<br>影响不相关的某个用户类型逻辑。<br>利用开关原则，我们可以尝试改造为下面的代码：</p>
-<pre><code>public class VIPCenter {
-    private Map&lt;User.TYPE, ServiceProvider&gt; providers;
-    void serviceVIP(T extend User user） {
-        providers.get(user.getType()).service(user);
-    }
-    }
-    interface ServiceProvider{
-        void service(T extend User user) ;
-    }
-    class SlumDogVIPServiceProvider implements ServiceProvider{
-        void service(T extend User user){
-        // do somthing
-    }
-    }
-    class RealVIPServiceProvider implements ServiceProvider{
-        void service(T extend User user) {
-        // do something
-    }
-}
-</code></pre><p>上面的示例，将不同对象分类的服务方法进行抽象，把业务逻辑的紧耦合关系拆开，实现代码的隔离保证了方便的扩展。</p>
-<p>今天</p>
+</code></pre><p>我来分析下这段逻辑实现：</p>
 <ul>
-<li>我对Java面向对象技术进行了梳理，</li>
-<li>对比了抽象类和接口，</li>
-<li>分析了Java语言在接口层面的演进和相应程序设计实现，</li>
-<li>最后回顾并实践了面向对象设计的基本原则，希望对你有所帮助。</li>
+<li>biasedLocking定义了偏斜锁相关操作，revoke_and_rebias是获取偏斜锁的入口方法，revoke_at_safepoint则定义了当检测到安全点时的处理逻辑。</li>
+<li>如果获取偏斜锁失败，则进入slow_enter。</li>
+<li>这个方法里面同样检查是否开启了偏斜锁，但是从代码路径来看，其实如果关闭了偏斜锁，是不会进入这个方法的，所以算是个额外的保障性检查吧。</li>
 </ul>
-<h1 id="一课一练"><a href="#一课一练" class="headerlink" title="一课一练"></a>一课一练</h1><p>关于接口和抽象类的区别，你做到心中有数了吗？给你布置一个思考题，思考一下自己的产品代码，有没有什么地方违反了基本设计原则？那些一改就崩的代码，是否遵循了开关原则？</p>
-<p>请你在留言区写写你对这个问题的思考，我会选出经过认真思考的留言，送给你一份学习鼓励金，欢迎你与我一起讨论。<br>你的朋友是不是也在准备面试呢？你可以“请朋友读”，把今天的题目分享给好友，或许你能帮到他。<br>极客时间</p>
+<p>另外，如果你仔细查看synchronizer.cpp里，会发现不仅仅是synchronized的逻辑，包括从本地代码，也就是JNI，触发的Monitor动作，全都可以在里面找到</p>
+<pre><code>（jni_enter/jni_exit）。
+</code></pre><p>关于biasedLocking的更多细节我就不展开了，明白它是通过CAS设置Mark Word就完全够用了，对象头中Mark Word的结构，可以参考下图：</p>
+<p><img src="//liangdg.github.io/2020/03/24/Java核心36讲16/对象头中Mark Word的结构.jpg" alt="对象头中Mark Word的结构"></p>
+<p>顺着锁升降级的过程分析下去，偏斜锁到轻量级锁的过程是如何实现的呢？<br>我们来看看slow_enter到底做了什么。</p>
+<pre><code>void ObjectSynchronizer::slow_enter(Handle obj, BasicLock* lock, TRAPS) {
+    markOop mark = obj-&gt;mark();
+    if (mark-&gt;is_neutral()) {
+        // 将目前的Mark Word复制到Displaced Header上
+        lock-&gt;set_displaced_header(mark);
+        // 利用CAS设置对象的Mark Word
+        if (mark == obj()-&gt;cas_set_mark((markOop) lock, mark)) {
+            TEVENT(slow_enter: release sacklock);
+            return;
+        }
+    // 检查存在竞争
+    } else if (mark-&gt;has_locker() &amp;&amp;
+        THREAD-&gt;is_lock_owned((address)mark-&gt;locker())) {
+        // 清除
+        lock-&gt;set_displaced_header(NULL);
+        return;
+    }
+    // 重置Displaced Header
+    lock-&gt;set_displaced_header(markOopDesc::unused_mark());
+    ObjectSynchronizer::infate(THREAD,
+    obj(),
+    infate_cause_monitor_enter)-&gt;enter(THREAD);
+}
+</code></pre><p>请结合我在代码中添加的注释，来理解</p>
+<p>如何从试图获取轻量级锁，逐步进入锁膨胀的过程。你可以发现这个处理逻辑，和我在这一讲最初介绍的过程是十分吻合的。<br>设置Displaced Header，然后利用cas_set_mark设置对象Mark Word，如果成功就成功获取轻量级锁。<br>否则Displaced Header，然后进入锁膨胀阶段，具体实现在infate方法中。</p>
+<p>今天就不介绍膨胀的细节了，我这里提供了源代码分析的思路和样例，考虑到应用实践，再进一步增加源代码解读意义不大，有兴趣的同学可以参考我提供的synchronizer.cpp链接，例如：<br>defate_idle_monitors是分析锁降级逻辑的入口，这部分行为还在进行持续改进，因为其逻辑是在安全点内运行，处理不当可能拖长JVM停顿（STW，stop-the-world）的时间。</p>
+<p>fast_exit或者slow_exit是对应的锁释放逻辑。</p>
+<p>前面分析了synchronized的底层实现，理解起来有一定难度，下面我们来看一些相对轻松的内容。 我在上一讲对比了synchronized和ReentrantLock，Java核心类库中还有其他一些特别的锁类型，具体请参考下面的图。</p>
+<p><img src="//liangdg.github.io/2020/03/24/Java核心36讲16/其他锁类型.jpg" alt="其他锁类型"></p>
+<p>你可能注意到了，这些锁竟然不都是实现了Lock接口，</p>
+<ul>
+<li>ReadWriteLock是一个单独的接口，它通常是代表了一对儿锁，分别对应只读和写操作，标准类库中提供了再入版本的读写锁实现（ReentrantReadWriteLock），对应的语义和ReentrantLock比较相似。</li>
+<li>StampedLock竟然也是个单独的类型，从类图结构可以看出它是不支持再入性的语义的，也就是它不是以持有锁的线程为单位。</li>
+</ul>
+<p>为什么我们需要读写锁（ReadWriteLock）等其他锁呢？<br>这是因为，虽然ReentrantLock和synchronized简单实用，但是行为上有一定局限性，通俗点说就是“太霸道”，要么不占，要么独占。</p>
+<p>实际应用场景中，有的时候不需要大量竞争的写操作，而是以并发读取为主，如何进一步优化并发操作的粒度呢？<br>Java并发包提供的读写锁等扩展了锁的能力，它所基于的原理是多个读操作是不需要互斥的，因为读操作并不会更改数据，所以不存在互相干扰。而写操作则会导致并发一致性的问题，所以写线程之间、读写线程之间，需要精心设计的互斥逻辑。</p>
+<p>下面是一个基于读写锁实现的数据结构，当数据量较大，并发读多、并发写少的时候，能够比纯同步版本凸显出优势。</p>
+<pre><code>public class RWSample {
+    private final Map&lt;String, String&gt; m = new TreeMap&lt;&gt;();
+    private final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+    private final Lock r = rwl.readLock();
+    private final Lock w = rwl.writeLock();
+    public String get(String key) {
+        r.lock();
+        Sysem.out.println(&quot;读锁锁定！&quot;);
+        try {
+            return m.get(key);
+        } finally {
+            r.unlock();
+        }
+    }
+    public String put(String key, String entry) {
+        w.lock();
+        Sysem.out.println(&quot;写锁锁定！&quot;);
+        try {
+            return m.put(key, entry);
+        } finally {
+            w.unlock();
+        }
+    }
+    // …
+}
+</code></pre><p>在运行过程中，如果读锁试图锁定时，写锁是被某个线程持有，读锁将无法获得，而只好等待对方操作结束，这样就可以自动保证不会读取到有争议的数据。<br>读写锁看起来比synchronized的粒度似乎细一些，但在实际应用中，其表现也并不尽如人意，主要还是因为相对比较大的开销。<br>所以，JDK在后期引入了StampedLock，在提供类似读写锁的同时，还支持优化读模式。优化读基于假设，大多数情况下读操作并不会和写操作冲突，其逻辑是先试着修改，然后通过validate方法确认是否进入了写模式，如果没有进入，就成功避免了开销；如果进入，则尝试获取读锁。请参考我下面的样例代码。</p>
+<pre><code>public class StampedSample {
+    private final StampedLock sl = new StampedLock();
+    void mutate() {
+        long samp = sl.writeLock();
+        try {
+            write();
+        } finally {
+            sl.unlockWrite(samp);
+        }
+    }
+    Data access() {
+        long samp = sl.tryOptimisicRead();
+        Data data = read();
+        if (!sl.validate(samp)) {
+            samp = sl.readLock();
+            try {
+                data = read();
+            } finally {
+                sl.unlockRead(samp);
+            }
+        }
+        return data;
+    }
+    // …
+}
+</code></pre><p>注意，这里的writeLock和unLockWrite一定要保证成对调用。<br>你可能很好奇这些显式锁的实现机制，Java并发包内的各种同步工具，不仅仅是各种Lock，其他的如Semaphore、CountDownLatch，甚至是早期的FutureTask 等，都是基于一种AQS框架。</p>
+<p>今天，</p>
+<ul>
+<li>我全面分析了synchronized相关实现和内部运行机制，</li>
+<li>简单介绍了并发包中提供的其他显式锁，</li>
+<li>并结合样例代码介绍了其使用方法，希望对你有所帮助。</li>
+</ul>
+<h1 id="一课一练"><a href="#一课一练" class="headerlink" title="一课一练"></a>一课一练</h1><p>关于今天我们讨论的你做到心中有数了吗？思考一个问题，你知道“自旋锁”是做什么的吗？它的使用场景是什么？</p>
+<p>请你在留言区写写你对这个问题的思考，我会选出经过认真思考的留言，送给你一份学习奖励礼券，欢迎你与我一起讨论。<br>你的朋友是不是也在准备面试呢？你可以“请朋友读”，把今天的题目分享给好友，或许你能帮到他。</p>
 
       
     </div>
@@ -658,8 +715,8 @@ public short doSomething() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/14/Java核心36讲12/" rel="next" title="12Java有几种文件拷贝方式？哪一种最高效？[转]">
-                <i class="fa fa-chevron-left"></i> 12Java有几种文件拷贝方式？哪一种最高效？[转]
+              <a href="/2020/03/18/Java核心36讲15/" rel="next" title="15synchronized和ReentrantLock有什么区别呢？[转]">
+                <i class="fa fa-chevron-left"></i> 15synchronized和ReentrantLock有什么区别呢？[转]
               </a>
             
           </div>
@@ -667,10 +724,6 @@ public short doSomething() {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/16/Git使用遇到的问题/" rel="prev" title="Git使用遇到的问题">
-                Git使用遇到的问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
